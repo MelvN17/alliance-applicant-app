@@ -2,7 +2,8 @@ import { React } from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
 import AboutUs from './components/AboutUs'
-
+import JoinUs from './components/JoinUs'
+import ContactUs from './components/ContactUs'
 
 function App() {
 
@@ -10,6 +11,8 @@ function App() {
     <div className="App">
       <Navbar />
       <AboutUs />
+      <JoinUs />
+      <ContactUs />
     </div>
   )
 }
