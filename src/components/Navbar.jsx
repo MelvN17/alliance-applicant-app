@@ -95,11 +95,11 @@ function Navbar(props) {
          
 
           <Box >
-            <img src={logo} alt="MUI logo" style={{width: '200px', height: '50px'}}/>
+            <img src={logo} alt="MUI logo" style={{width: '200px', height: '70px'}}/>
           </Box>
           <Box>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#000000', paddingLeft: '3rem', '&:hover': {color: '#000000', fontWeight: 'bold'}}}>
+              <Button key={item} sx={{ color: '#000000', paddingLeft: '3rem', '&:hover': { backgroundColor: "transparent", color: '#000000', fontWeight: 'bold'}}}>
                 {item}
               </Button>
             ))}
