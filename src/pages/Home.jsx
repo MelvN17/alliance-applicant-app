@@ -6,17 +6,17 @@ import JoinUs from './components/JoinUs'
 import ContactUs from './components/ContactUs'
 import Footer from './components/Footer'
 
-function App() {
+function Home() {
 
   return (
-    <div className="App">
+    <>
       <Navbar />
       <AboutUs />
       <JoinUs />
       <ContactUs />
       <Footer />
-    </div>
+    </>
   )
 }
 
-export default App
+export default Home

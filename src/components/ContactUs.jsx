@@ -1,12 +1,15 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import { Typography } from '@mui/material';
-import building from '../img/building.png';
+import { List, ListItem, ListItemIcon } from '@mui/material';
+import HomeIcon from '@mui/icons-material/Home';
+import PhoneIcon from '@mui/icons-material/Phone';
+import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
+import EmailIcon from '@mui/icons-material/Email';
 
-export default function AboutUs() {
+
+export default function ContactUs() {
   return (
     //"BOX" SERVES AS THE CONTAINER OR THE WRAPPER
     <Box sx={{ flexGrow: 1 }}> 
@@ -36,21 +39,34 @@ export default function AboutUs() {
                 variant="h5"> 
                 Cebu Head Office
                 </Typography>
-                <Typography sx={{textAlign: 'left', fontFamily: 'Poppins, serif',  }} variant="h6"> 
-                14th Floor, Buildcomm CenterSumilon Road, Cebu Business Park Cebu City 6000, Philippines
-                </Typography>
-                <Typography sx={{textAlign: 'left', fontFamily: 'Poppins, serif', }} variant="h6"> 
-                +63-32-261-1705
-                </Typography>
-                <Typography sx={{textAlign: 'left', fontFamily: 'Poppins, serif', }} variant="h6"> 
-                +63 918-948-4041 
-                </Typography>
-                <Typography sx={{textAlign: 'left', fontFamily: 'Poppins, serif', }} variant="h6"> 
-                +63 908-884-6922
-                </Typography>
-                <Typography sx={{textAlign: 'left', fontFamily: 'Poppins, serif', }} variant="h6"> 
-                for Inquiries: info@alliance.com.ph for applications: jobs@alliance.com.ph
-                </Typography>
+                <List>
+                  <ListItem>
+                    <ListItemIcon>
+                      <HomeIcon sx={{color: 'black'}}/>
+                    </ListItemIcon>
+                    <Typography sx={{textAlign: 'left', fontFamily: 'Poppins, serif' }} variant="p">
+                    14th Floor, Buildcomm CenterSumilon Road, Cebu Business Park Cebu City 6000, Philippines
+                    </Typography>
+                  </ListItem>
+                  <ListItem>
+                    <ListItemIcon>
+                      <PhoneIcon sx={{color: 'black'}}/>
+                    </ListItemIcon>
+                    <Typography sx={{textAlign: 'left', fontFamily: 'Poppins, serif' }} variant="p">+63-32-261-1705</Typography>
+                  </ListItem>
+                  <ListItem>
+                    <ListItemIcon>
+                      <PhoneAndroidIcon sx={{color: 'black'}}/>
+                    </ListItemIcon>
+                    <Typography sx={{textAlign: 'left', fontFamily: 'Poppins, serif' }} variant="paragraphp">&#40;+63&#41; 918-948-4041 <br/>&#40;+63&#41; 908-884-6922</Typography>
+                  </ListItem>
+                  <ListItem>
+                    <ListItemIcon>
+                      <EmailIcon sx={{color: 'black'}}/>
+                    </ListItemIcon>
+                    <Typography sx={{textAlign: 'left', fontFamily: 'Poppins, serif' }} variant="paragraphp">info@alliance.com.ph &#40;for Inquiries&#41; <br/>jobs@alliance.com.ph &#40;for applications&#41;</Typography>
+                  </ListItem>
+                </List>
             </Box>
         </Grid>
         <Grid item md={6} >
@@ -64,12 +80,22 @@ export default function AboutUs() {
                 variant="h5"> 
                 Manila Office
                 </Typography>
-                <Typography sx={{textAlign: 'left', fontFamily: 'Poppins, serif',  }} variant="h6"> 
-                7th Floor, Santolan Town Plaza, 276 Santolan Road Little Baguio, San Juan City, 1500 Metro Manila, Philippines
-                </Typography>
-                <Typography sx={{textAlign: 'left', fontFamily: 'Poppins, serif', }} variant="h6"> 
-                +63-2-7739-9038
-                </Typography>
+                <List>
+                  <ListItem>
+                    <ListItemIcon>
+                      <HomeIcon sx={{color: 'black'}}/>
+                    </ListItemIcon>
+                    <Typography sx={{textAlign: 'left', fontFamily: 'Poppins, serif' }} variant="p">
+                    7th Floor, Santolan Town Plaza, 276 Santolan Road Little Baguio, San Juan City, 1500 Metro Manila, Philippines
+                    </Typography>
+                  </ListItem>
+                  <ListItem>
+                    <ListItemIcon>
+                      <PhoneIcon sx={{color: 'black'}}/>
+                    </ListItemIcon>
+                    <Typography sx={{textAlign: 'left', fontFamily: 'Poppins, serif' }} variant="p">+63-2-7739-9038</Typography>
+                  </ListItem>
+                </List>
             </Box>
         </Grid>
         <Grid item md={6} >
@@ -83,18 +109,28 @@ export default function AboutUs() {
                 variant="h5"> 
                 Japan Office
                 </Typography>
-                <Typography sx={{textAlign: 'left', fontFamily: 'Poppins, serif', }} variant="h6"> 
-                2-5-7-201 Hirakawa cho, Chiyoda-kuTokyo, 102-0093 Japan
-                </Typography>
-                <Typography sx={{textAlign: 'left', fontFamily: 'Poppins, serif', }} variant="h6"> 
-                +81-3-5215-900
-                </Typography>
-                <Typography sx={{textAlign: 'left', fontFamily: 'Poppins, serif', }} variant="h6"> 
-                +81-3-5215-9004
-                </Typography>
-                <Typography sx={{textAlign: 'left', fontFamily: 'Poppins, serif', }} variant="h6"> 
-                Mr. Yoshihiro Isano: y_isano@asji.jp
-                </Typography>
+                <List>
+                  <ListItem>
+                    <ListItemIcon>
+                      <HomeIcon sx={{color: 'black'}}/>
+                    </ListItemIcon>
+                    <Typography sx={{textAlign: 'left', fontFamily: 'Poppins, serif' }} variant="p">
+                    2-5-7-201 Hirakawa cho, Chiyoda-kuTokyo, 102-0093 Japan
+                    </Typography>
+                  </ListItem>
+                  <ListItem>
+                    <ListItemIcon>
+                      <PhoneIcon sx={{color: 'black'}}/>
+                    </ListItemIcon>
+                    <Typography sx={{textAlign: 'left', fontFamily: 'Poppins, serif' }} variant="p">+81-3-5215-9006 <br/> &#40;FAX&#41; +81-3-5215-9004</Typography>
+                  </ListItem>
+                  <ListItem>
+                    <ListItemIcon>
+                      <EmailIcon sx={{color: 'black'}}/>
+                    </ListItemIcon>
+                    <Typography sx={{textAlign: 'left', fontFamily: 'Poppins, serif' }} variant="paragraphp">y_isano@asji.jp &#40;Mr. Yoshihiro Isano&#41;</Typography>
+                  </ListItem>
+                </List>
             </Box>
         </Grid>
       </Grid>

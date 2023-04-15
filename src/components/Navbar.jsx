@@ -62,9 +62,7 @@ function Navbar(props) {
       <AppBar component="nav" sx={{
         display: 'flex',
         justifyContent: 'space-between',
-        margin: '1rem auto',
-        paddingTop: '1rem',
-        backgroundColor: '#0000',
+        backgroundColor: '#ffffff',
       }} >
 
         
@@ -72,6 +70,8 @@ function Navbar(props) {
         display: 'flex',
         maxWidth: '90%',
         margin: '0 3rem',
+        paddingTop: '2rem',
+        paddingBottom: '1rem',
         justifyContent: "flex-start",
       }}>
           <IconButton
