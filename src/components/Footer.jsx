@@ -27,22 +27,27 @@ export default function Footer() {
             >
                 <Toolbar>
                     <Box sx={{ flexGrow: 1 }}>
-                    <img src="/src/img/logo.png" alt="logo" style={{width: '200px', height: 'auto', paddingTop: '2rem'}} />
+                        <img src="/src/img/logo.png" alt="logo" style={{width: '200px', height: 'auto', paddingTop: '2rem'}} />
                     </Box>
+                    
                     <Typography sx={{ml: 1, fontFamily: 'Poppins, serif'}} variant="h6">
                     Socials <br/> 
-                    <IconButton sx={{ ml: 1, color: 'black' }} href="https://www.facebook.com/">
-                    <FacebookIcon />
-                    </IconButton>
-                    <IconButton sx={{ ml: 1, color: 'black' }} href="https://www.linkedin.com/">
-                    <LinkedInIcon />
-                    </IconButton>
-                    <IconButton sx={{ ml: 1, color: 'black' }} href="https://twitter.com/">
-                    <TwitterIcon />
-                    </IconButton>
-                    <IconButton sx={{ ml: 1, color: 'black' }} href="https://www.youtube.com/">
-                    <YouTubeIcon />
-                    </IconButton>
+                        <IconButton sx={{ ml: 1, color: 'black' }} href="https://www.facebook.com/">
+                            <FacebookIcon />
+                        </IconButton>
+
+                        <IconButton sx={{ ml: 1, color: 'black' }} href="https://www.linkedin.com/">
+                            <LinkedInIcon />
+                        </IconButton>
+
+                        <IconButton sx={{ ml: 1, color: 'black' }} href="https://twitter.com/">
+                            <TwitterIcon />
+                        </IconButton>
+
+                        <IconButton sx={{ ml: 1, color: 'black' }} href="https://www.youtube.com/">
+                            <YouTubeIcon />
+                        </IconButton>
+
                     </Typography>
                 </Toolbar>
             </Grid>

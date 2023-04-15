@@ -14,9 +14,9 @@ export default function JoinUs() {
     <Box sx={{ flexGrow: 1 }}> 
         <Grid container spacing={2}>
             <Grid item md={12} sx={{padding: '2rem 0', marginTop: '2rem'}}>
-            <Typography sx={{textAlign: 'center', fontFamily: 'Roboto Slab, serif', fontWeight: '700', color: '#FF0000'}} variant="h3"> 
-                Join Us
-            </Typography>
+                <Typography sx={{textAlign: 'center', fontFamily: 'Roboto Slab, serif', fontWeight: '700', color: '#FF0000'}} variant="h3"> 
+                    Join Us
+                </Typography>
             </Grid>
             <Grid
             container
@@ -38,15 +38,18 @@ export default function JoinUs() {
                             image="/src/img/joinUs.png"
                             alt="Join Us"     
                             />
+
                             <CardContent>
-                            <Typography gutterBottom variant="h5" component="div" textAlign='center'>
-                                Applicant
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary" textAlign={'justify'} sx={{fontFamily: 'Poppins, serif'}}>
-                            Praesent placerat scelerisque ex vitae mollis. Curabitur at pellentesque mi, eu consequat arcu. Fusce tincidunt nunc eget commodo tempus. Morbi viverra justo vel sapien interdum,
-                            </Typography>
+                                <Typography gutterBottom variant="h5" component="div" textAlign='center'>
+                                    Applicant
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary" textAlign={'justify'} sx={{fontFamily: 'Poppins, serif'}}>
+                                     placerat scelerisque ex vitae mollis. Curabitur at pellentesque mi, eu consequat arcu. Fusce tincidunt nunc eget commodo tempus. Morbi viverra justo vel sapien interdum,
+                                </Typography>
                             </CardContent>
+
                         </CardActionArea>
+                        
                         <CardActions style={{justifyContent: 'center'}} >
                             <Button size="small" color="error" variant='contained' alignItems="center"  endIcon={<ArrowForwardIosIcon/>}>
                              Continue 
