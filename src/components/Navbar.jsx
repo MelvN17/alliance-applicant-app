@@ -79,6 +79,7 @@ function Navbar(props) {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
+            backgroundColor= "transparent"
             sx={{ mr: 2, display: { sm: 'none' } }}
           >
             <MenuIcon />
@@ -127,10 +128,10 @@ function Navbar(props) {
           {drawer}
         </Drawer>
       </Box>
-      <Box component="main" sx={{width: '99vw'}}>
+      {/* <Box component="main" sx={{width: '99vw'}}>
         <Toolbar />
         <img src={bg} alt="Hero section" style={{paddingTop: '2rem', backgroundSize: 'cover', width: '100%', height: '90vh'}} />
-      </Box>
+      </Box> */}
     </Box>
   );
 }
