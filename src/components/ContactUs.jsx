@@ -14,8 +14,8 @@ export default function ContactUs() {
     //"BOX" SERVES AS THE CONTAINER OR THE WRAPPER
     <Box sx={{ flexGrow: 1 }}> 
       <Grid container spacing={2}>
-        <Grid item md={12} sx={{padding: '0.5rem 0'}}>
-          <Typography sx={{textAlign: 'center', fontFamily: 'Roboto Slab, serif', fontWeight: '700', color: '#FF0000'}} variant="h3"> 
+        <Grid item md={12}  sx={{padding: '2rem 0', marginTop: '2rem'}} >
+          <Typography sx={{textAlign: 'center', fontFamily: 'Roboto Slab, serif', fontWeight: '700', color: '#FF0000', padding: '1rem'}} variant="h3"> 
             Contact Us
           </Typography>
           <Typography 
@@ -34,8 +34,7 @@ export default function ContactUs() {
               <Typography 
                 sx={{textAlign: 'left',
                 fontFamily: 'Poppins, serif',
-                fontWeight: '700',
-                padding: '0.5rem 0',
+                fontWeight: '700'
                 }}
                 variant="h5"> 
                 Cebu Head Office
@@ -82,8 +81,7 @@ export default function ContactUs() {
             <Typography 
                 sx={{textAlign: 'left',
                 fontFamily: 'Poppins, serif',
-                fontWeight: '700',
-                padding: '0.5rem 0',
+                fontWeight: '700'
                 }}
                 variant="h5"> 
                 Manila Office
@@ -116,8 +114,7 @@ export default function ContactUs() {
             <Typography 
               sx={{textAlign: 'left',
               fontFamily: 'Poppins, serif',
-              fontWeight: '700',
-              padding: '0.5rem 0',
+              fontWeight: '700'
               }}
               variant="h5"> 
               Japan Office

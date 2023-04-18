@@ -80,6 +80,7 @@ function Navbar(props) {
             edge="start"
             onClick={handleDrawerToggle}
             backgroundColor= "transparent"
+            disableTouchRipple={true}
             sx={{ mr: 2, display: { sm: 'none' } }}
           >
             <MenuIcon />
@@ -100,7 +101,7 @@ function Navbar(props) {
           </Box>
           <Box>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#000000', paddingLeft: '3rem', '&:hover': { backgroundColor: "transparent", color: '#000000', fontWeight: 'bold'}}}>
+              <Button  disableTouchRipple={true} key={item} sx={{ color: '#000000', paddingLeft: '3rem', '&:hover': { backgroundColor: "transparent", color: '#000000', fontWeight: 'bold'}}}>
                 {item}
               </Button>
             ))}
