@@ -8,6 +8,7 @@ import CardMedia from '@mui/material/CardMedia';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
+
 export default function JoinUs() {
   return (
     //"BOX" SERVES AS THE CONTAINER OR THE WRAPPER
@@ -27,35 +28,40 @@ export default function JoinUs() {
             style={{ minHeight: '100vh' }}
             >
 
-                <Grid item xs={3}>
-                    <Card sx={{ maxWidth: 400}}>
-                        <CardActionArea>
+                <Grid item xs={2}>
+                    <Card sx={{maxWidth: 400, width: 400, height: 650}}>
+                        <CardActionArea disableTouchRipple={true} sx={{ '&:hover': { backgroundColor: "transparent !important" } }}>
                             <CardMedia
                             component="img"
-                            //height="600"
-                            //width="300"
+                            height="400"
+                            width="20"
+                            marginTop='2rem'
 
                             image="/src/img/joinUs.png"
                             alt="Join Us"     
+                            padding = "50"
                             />
 
-                            <CardContent>
+                            <CardContent alignItems="center">
                                 <Typography gutterBottom variant="h5" component="div" textAlign='center'>
                                     Applicant
                                 </Typography>
-                                <Typography variant="body2" color="text.secondary" textAlign={'justify'} sx={{fontFamily: 'Poppins, serif'}}>
+                                <Typography variant="body2" fontSize="medium" color="text.primary" textAlign={'justify'} sx={{fontFamily: 'Poppins, serif'}}>
                                      placerat scelerisque ex vitae mollis. Curabitur at pellentesque mi, eu consequat arcu. Fusce tincidunt nunc eget commodo tempus. Morbi viverra justo vel sapien interdum,
                                 </Typography>
                             </CardContent>
 
                         </CardActionArea>
                         
-                        <CardActions style={{justifyContent: 'center'}} >
-                            <Button size="small" color="error" variant='contained' alignItems="center"  endIcon={<ArrowForwardIosIcon/>}>
-                             Continue 
-                            </Button>
-                        </CardActions>
                     </Card>
+                    <Grid paddingTop='4rem'>
+                    <div style={{textAlign:"center"}}>
+                        <Button size="small" color="error" variant='contained' alignItems="center"  endIcon={<ArrowForwardIosIcon/>}>
+                             Continue 
+                        </Button>
+                    </div>
+                    </Grid>
+                
                 </Grid>
             </Grid>
         </Grid>
