@@ -32,19 +32,19 @@ export default function Footer() {
                     
                     <Typography sx={{ml: 1, fontFamily: 'Poppins, serif'}} variant="h6">
                     Socials <br/> 
-                        <IconButton sx={{ ml: 1, color: 'black' }} href="https://www.facebook.com/">
+                        <IconButton sx={{ ml: 1, color: 'black' }} href="https://www.facebook.com/AllianceSoftwareInc">
                             <FacebookIcon />
                         </IconButton>
 
-                        <IconButton sx={{ ml: 1, color: 'black' }} href="https://www.linkedin.com/">
+                        <IconButton sx={{ ml: 1, color: 'black' }} href="https://www.linkedin.com/in/alliance-software-7a180a49/">
                             <LinkedInIcon />
                         </IconButton>
 
-                        <IconButton sx={{ ml: 1, color: 'black' }} href="https://twitter.com/">
+                        <IconButton sx={{ ml: 1, color: 'black' }} href="https://twitter.com/AllianceSW">
                             <TwitterIcon />
                         </IconButton>
 
-                        <IconButton sx={{ ml: 1, color: 'black' }} href="https://www.youtube.com/">
+                        <IconButton sx={{ ml: 1, color: 'black' }} href="https://www.youtube.com/@alliancesoftwareinc.3464">
                             <YouTubeIcon />
                         </IconButton>
 

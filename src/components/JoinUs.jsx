@@ -30,30 +30,28 @@ export default function JoinUs() {
 
                 <Grid item xs={2}>
                     <Card sx={{maxWidth: 400, width: 400, height: 650}}>
-                        <CardActionArea disableTouchRipple={true} sx={{ '&:hover': { backgroundColor: "transparent !important" } }}>
-                            <CardMedia
-                            component="img"
-                            height="400"
-                            width="20"
-                            marginTop='2rem'
+                            
+                        <CardMedia
+                        component="img"
+                        height="400"
+                        width="20"
+                        marginTop='2rem'
 
-                            image="/src/img/joinUs.png"
-                            alt="Join Us"     
-                            padding = "50"
-                            />
+                        image="/src/img/joinUs.png"
+                        alt="Join Us"     
+                        padding = "50"
+                        />
 
-                            <CardContent alignItems="center">
-                                <Typography gutterBottom variant="h5" component="div" textAlign='center'>
-                                    Applicant
-                                </Typography>
-                                <Typography variant="body2" fontSize="medium" color="text.primary" textAlign={'justify'} sx={{fontFamily: 'Poppins, serif'}}>
-                                     placerat scelerisque ex vitae mollis. Curabitur at pellentesque mi, eu consequat arcu. Fusce tincidunt nunc eget commodo tempus. Morbi viverra justo vel sapien interdum,
-                                </Typography>
-                            </CardContent>
-
-                        </CardActionArea>
-                        
+                        <CardContent alignItems="center">
+                             <Typography gutterBottom variant="h5" component="div" textAlign='center'>
+                                Applicant
+                            </Typography>
+                            <Typography variant="body2" fontSize="medium" color="text.primary" textAlign={'justify'} sx={{fontFamily: 'Poppins, serif'}}>
+                                placerat scelerisque ex vitae mollis. Curabitur at pellentesque mi, eu consequat arcu. Fusce tincidunt nunc eget commodo tempus. Morbi viverra justo vel sapien interdum,
+                            </Typography>
+                        </CardContent>
                     </Card>
+                    
                     <Grid paddingTop='4rem'>
                     <div style={{textAlign:"center"}}>
                         <Button size="small" color="error" variant='contained' alignItems="center"  endIcon={<ArrowForwardIosIcon/>}>
