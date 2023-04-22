@@ -1,26 +1,18 @@
 import { React } from 'react'
 import './App.css'
-import Navbar from './components/Navbar'
-import AboutUs from './components/AboutUs'
-import JoinUs from './components/JoinUs'
-import ContactUs from './components/ContactUs'
-import Footer from './components/Footer'
-import Form from './components/Form'
+import LoginForm from './components/LoginForm'
 import Image from './components/Image'
-import { Grid, Typography, colors } from '@mui/material'
 
-function App() {
+
+function Login() {
 
   return (
     <div className="App">
       <Image>
-        <Grid>
-          <Typography sx={{color:'#FF0000'}}>Welcome to</Typography>
-          <Form/>
-        </Grid>
+          <LoginForm/>
       </Image>
     </div>
   )
 }
 
-export default App
+export default Login
