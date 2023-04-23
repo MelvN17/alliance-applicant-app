@@ -10,48 +10,48 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 
 export default function Footer() {
-  return (
-    //"BOX" SERVES AS THE CONTAINER OR THE WRAPPER
-    <Box sx={{ flexGrow: 1 }}> 
-        <Grid container spacing={2}>
-            <Grid
-            container
-            spacing={0}
-            direction="column"
-            alignItems="left"
-            justifyContent="center"
-            marginTop='1rem'
-            padding="1rem"
-            paddingLeft="9rem"
-            style={{ minHeight: '10rem', backgroundColor:'#eeeeee' }}
-            >
-                <Toolbar>
-                    <Box sx={{ flexGrow: 1 }}>
-                        <img src="/src/img/logo.png" alt="logo" style={{width: '200px', height: 'auto', paddingTop: '2rem'}} />
-                    </Box>
-                    
-                    <Typography sx={{ml: 1, fontFamily: 'Poppins, serif'}} variant="h6">
-                    Socials <br/> 
-                        <IconButton sx={{ ml: 1, color: 'black' }} href="https://www.facebook.com/AllianceSoftwareInc">
-                            <FacebookIcon />
-                        </IconButton>
+    return (
+        //"BOX" SERVES AS THE CONTAINER OR THE WRAPPER
+        <Box sx={{ flexGrow: 1 }}>
+            <Grid container spacing={2}>
+                <Grid
+                    container
+                    spacing={0}
+                    direction="column"
+                    alignItems="left"
+                    justifyContent="center"
+                    marginTop='1rem'
+                    padding="1rem"
+                    paddingLeft="9rem"
+                    style={{ minHeight: '10rem', backgroundColor: '#eeeeee' }}
+                >
+                    <Toolbar>
+                        <Box sx={{ flexGrow: 1 }}>
+                            <img src="/src/img/logo.png" alt="logo" style={{ width: '200px', height: 'auto', paddingTop: '2rem' }} />
+                        </Box>
 
-                        <IconButton sx={{ ml: 1, color: 'black' }} href="https://www.linkedin.com/in/alliance-software-7a180a49/">
-                            <LinkedInIcon />
-                        </IconButton>
+                        <Typography sx={{ ml: 1, fontFamily: 'Poppins, serif' }} variant="h6">
+                            Socials <br />
+                            <IconButton sx={{ ml: 1, color: 'black' }} href="https://www.facebook.com/AllianceSoftwareInc">
+                                <FacebookIcon />
+                            </IconButton>
 
-                        <IconButton sx={{ ml: 1, color: 'black' }} href="https://twitter.com/AllianceSW">
-                            <TwitterIcon />
-                        </IconButton>
+                            <IconButton sx={{ ml: 1, color: 'black' }} href="https://www.linkedin.com/in/alliance-software-7a180a49/">
+                                <LinkedInIcon />
+                            </IconButton>
 
-                        <IconButton sx={{ ml: 1, color: 'black' }} href="https://www.youtube.com/@alliancesoftwareinc.3464">
-                            <YouTubeIcon />
-                        </IconButton>
+                            <IconButton sx={{ ml: 1, color: 'black' }} href="https://twitter.com/AllianceSW">
+                                <TwitterIcon />
+                            </IconButton>
 
-                    </Typography>
-                </Toolbar>
+                            <IconButton sx={{ ml: 1, color: 'black' }} href="https://www.youtube.com/@alliancesoftwareinc.3464">
+                                <YouTubeIcon />
+                            </IconButton>
+
+                        </Typography>
+                    </Toolbar>
+                </Grid>
             </Grid>
-        </Grid>
-    </Box>
-  );
+        </Box>
+    );
 }

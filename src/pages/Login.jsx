@@ -9,7 +9,7 @@ function Login() {
   return (
     <div className="App">
       <Image>
-          <LoginForm/>
+        <LoginForm />
       </Image>
     </div>
   )

@@ -13,14 +13,11 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import logo from '../img/logo.png';
-import bg from '../img/bg.png';
 import Stack from '@mui/material/Stack';
 
 const drawerWidth = 240;
-const navItems = ['Home', 'About Us', 'Join Us', 'Contact Us'];
 
 function Navbar(props) {
   const { window } = props;
@@ -29,14 +26,14 @@ function Navbar(props) {
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
-  
+
   const isMobile = useMediaQuery('(max-width:600px)');
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center'}}>
-      <img src={logo} alt="MUI logo" style={{width: '100px', height: 'auto', paddingTop: '2rem'}}/>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+      <img src={logo} alt="MUI logo" style={{ width: '100px', height: 'auto', paddingTop: '2rem' }} />
       <Divider />
       <List>
-        {navItems.map((item) => (
+        {props.navItems.map((item) => (
           <ListItem key={item} >
             <ListItemButton sx={{ textAlign: 'center' }} >
               <ListItemText primary={item} />
@@ -51,67 +48,67 @@ function Navbar(props) {
 
   return (
     <Box sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        maxWidth: '80%',
-        margin: '0 auto',
-      }}>
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      maxWidth: '80%',
+      margin: '0 auto',
+    }}>
       <CssBaseline />
-      
+
       <AppBar component="nav" sx={{
         display: 'flex',
         justifyContent: 'space-between',
         backgroundColor: '#ffffff',
       }} >
 
-        
+
         <Toolbar sx={{
-        display: 'flex',
-        maxWidth: '90%',
-        margin: '0 3rem',
-        paddingTop: '2rem',
-        paddingBottom: '1rem',
-        justifyContent: "flex-start",
-      }}>
+          display: 'flex',
+          maxWidth: '90%',
+          margin: '0 3rem',
+          paddingTop: '2rem',
+          paddingBottom: '1rem',
+          justifyContent: "flex-start",
+        }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            backgroundColor= "transparent"
+            backgroundColor="transparent"
             disableTouchRipple={true}
             sx={{ mr: 2, display: { sm: 'none' } }}
           >
             <MenuIcon />
           </IconButton>
-            
-             {isMobile ? null : (
-             <Stack
-            direction="row"
-            justifyContent="space-around"
-            alignItems="center"
-            spacing={2}
-            sx = {{width: '100%',}}
-            >
-         
 
-          <Box >
-            <img src={logo} alt="MUI logo" style={{width: '200px', height: '70px'}}/>
-          </Box>
-          <Box>
-            {navItems.map((item) => (
-              <Button  disableTouchRipple={true} key={item} sx={{ color: '#000000', paddingLeft: '3rem', '&:hover': { backgroundColor: "transparent", color: '#000000', fontWeight: 'bold'}}}>
-                {item}
-              </Button>
-            ))}
-          </Box>
-         
-          </Stack>
-           )}
+          {isMobile ? null : (
+            <Stack
+              direction="row"
+              justifyContent="space-around"
+              alignItems="center"
+              spacing={2}
+              sx={{ width: '100%', }}
+            >
+
+
+              <Box >
+                <img src={logo} alt="MUI logo" style={{ width: '200px', height: '70px' }} />
+              </Box>
+              <Box>
+                {props.navItems.map((item) => (
+                  <Button disableTouchRipple={true} key={item} sx={{ color: '#000000', paddingLeft: '3rem', '&:hover': { backgroundColor: "transparent", color: '#000000', fontWeight: 'bold' } }}>
+                    {item}
+                  </Button>
+                ))}
+              </Box>
+
+            </Stack>
+          )}
         </Toolbar>
       </AppBar>
-      
+
       <Box component="nav">
         <Drawer
           container={container}
