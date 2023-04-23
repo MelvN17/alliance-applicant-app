@@ -5,7 +5,7 @@ import AboutUs from './components/AboutUs'
 import JoinUs from './components/JoinUs'
 import ContactUs from './components/ContactUs'
 import Footer from './components/Footer'
-import LoginForm from './components/LoginForm'
+import ApplicationForm from './components/ApplicationForm'
 import Image from './components/Image'
 import { Grid, Typography, colors } from '@mui/material'
 
@@ -13,9 +13,7 @@ function App() {
 
   return (
     <div className="App">
-      <Image>
-          <LoginForm/>
-      </Image>
+      <ApplicationForm />
     </div>
   )
 }
