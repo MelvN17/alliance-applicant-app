@@ -8,19 +8,11 @@ import Link from '@mui/material/Link';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Typography from '@mui/material/Typography';
-import InputAdornment from '@mui/material/InputAdornment';
-import IconButton from '@mui/material/IconButton';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-export default function Form() {
+
+export default function ApplicationForm() {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const [showPassword, setShowPassword] = React.useState(false);
-
-  const handleClickShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -29,6 +21,7 @@ export default function Form() {
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center' }} minWidth={450}>
+
       <Grid container direction="column" justifyContent="center" alignItems="center" paddingTop={'5%'} height={'100vh'}>
         <Grid item width={'80%'}>
           <Typography variant='h4' sx={{ color: '#FF0000' }}>Welcome to</Typography>
@@ -45,8 +38,6 @@ export default function Form() {
               name="email"
               autoComplete="email"
               autoFocus
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
             />
 
             <TextField
@@ -55,20 +46,10 @@ export default function Form() {
               fullWidth
               name="password"
               label="Password"
-              type={showPassword ? 'text' : 'password'}
+              type="password"
               id="password"
               autoComplete="current-password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton onClick={handleClickShowPassword} edge="end">
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
+
             />
 
             <Grid container>
@@ -103,6 +84,8 @@ export default function Form() {
           </Box>
         </Grid>
       </Grid>
+
     </Box>
   );
 }
+
