@@ -23,11 +23,11 @@ export default function Form() {
     <Box sx={{ display: 'flex', justifyContent: 'center' }} minWidth={450}>
       
       <Grid container direction="column" justifyContent="center" alignItems="center" paddingTop={'5%'} height={'100vh'}>
-        <Grid item width={'90%'}>
+        <Grid item width={'80%'}>
           <Typography variant='h4' sx={{color:'#FF0000'}}>Welcome to</Typography>
           <Box component="img" src="/src/img/logo.png" width={'100%'} />
         </Grid>
-      <Grid item width={'90%'}>
+      <Grid item width={'80%'}>
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1, justifyContent: 'center' }}>
               <TextField
                 margin="normal"
@@ -61,7 +61,7 @@ export default function Form() {
                   />
                 </Grid>
                 <Grid item>
-                  <Link href="#" variant="body2">
+                  <Link href="#" variant="body2" sx={{color:'#FF0000'}}>
                     Forgot password?
                   </Link>
                 </Grid>
