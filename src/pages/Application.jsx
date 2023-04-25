@@ -1,16 +1,17 @@
 import { React } from 'react'
 import './App.css'
 import { Box, Grid, Typography, Button } from '@mui/material'
-import Navbar from './components/Navbar'
-
+import Image from './components/Image'
+import ApplicationForm from './components/ApplicationForm'
 
 function Application() {
 
     return (
-        <>
-            
-
-        </>
+        <div className="App">
+            <Image image="src/img/application_image.png">
+                <ApplicationForm />
+            </Image>
+        </div>
     )
 }
 

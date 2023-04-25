@@ -1,17 +1,18 @@
 import { React } from 'react'
 import './App.css'
 import { Box, Grid, Typography, Button } from '@mui/material'
-import Navbar from './components/Navbar'
+import Image from './components/Image'
+import ApplicationForm from './components/ApplicationForm'
 
+function App() {
 
-function ManageApplicants() {
-
-  return (
-    <>
-      <Navbar navItems={['Applicants', 'Manage Applicants', 'Log Out']} />
-
-    </>
-  )
+    return (
+        <div className="App">
+            <Image image="src/img/application_image.png">
+                <ApplicationForm />
+            </Image>
+        </div>
+    )
 }
 
-export default ManageApplicants
+export default App
