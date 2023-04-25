@@ -8,7 +8,7 @@ function Login() {
 
   return (
     <div className="App">
-      <Image>
+      <Image right image = "src/img/login_image.png">
         <LoginForm />
       </Image>
     </div>
