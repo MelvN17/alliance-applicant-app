@@ -1,7 +1,7 @@
 import { React } from 'react'
-import './App.css'
+import '../App.css'
 import LoginForm from './components/LoginForm'
-import Image from './components/Image'
+import Image from '../components/Image'
 
 
 function Login() {

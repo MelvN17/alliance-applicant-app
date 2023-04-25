@@ -1,8 +1,8 @@
 import { React } from 'react'
-import './App.css'
+import '../App.css'
 import { Box, Grid, Typography, Button } from '@mui/material'
-import Image from './components/Image'
-import ApplicationForm from './components/ApplicationForm'
+import Image from '..Footer/components/Image'
+import ApplicationForm from '../components/ApplicationForm'
 
 function Application() {
 

@@ -1,11 +1,11 @@
 import { React } from 'react'
-import './App.css'
+import '../App.css'
 import { Box, Grid, Typography, Card, CardContent, CardMedia, Button } from '@mui/material'
-import Navbar from './components/Navbar'
-import HomeItem from './components/HomeItem'
-import PageBanner from './components/PageBanner';
-import Footer from './components/Footer'
-import IconList from './components/IconList'
+import Navbar from '../components/Navbar'
+import HomeItem from '../components/HomeItem'
+import PageBanner from '../components/PageBanner';
+import Footer from '../components/Footer'
+import IconList from '../components/IconList'
 import PhoneIcon from '@mui/icons-material/Phone';
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 import EmailIcon from '@mui/icons-material/Email';
