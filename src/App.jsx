@@ -5,6 +5,9 @@ import Image from './components/Image'
 import ApplicationForm from './components/ApplicationForm'
 import Home from './pages/Home'
 import Applicants from './pages/Applicants'
+import Application from './pages/Application'
+
+
 function App() {
 
     return (
@@ -14,6 +17,7 @@ function App() {
             </Image> */}
             {/* <Home /> */}
             <Applicants />
+            {/* <Application /> */}
         </div>
     )
 }

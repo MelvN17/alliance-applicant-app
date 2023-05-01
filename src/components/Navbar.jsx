@@ -16,6 +16,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import logo from '../img/logo.png';
 import Stack from '@mui/material/Stack';
+import {Link} from 'react-scroll';
 
 const drawerWidth = 240;
 
@@ -30,18 +31,27 @@ function Navbar(props) {
   const isMobile = useMediaQuery('(max-width:600px)');
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <img src={logo} alt="MUI logo" style={{ width: '100px', height: 'auto', paddingTop: '2rem' }} />
-      <Divider />
-      <List>
-        {props.navItems.map((item) => (
-          <ListItem key={item} >
+    <img src={logo} alt="MUI logo" style={{ width: '100px', height: 'auto', paddingTop: '2rem' }} />
+    <Divider />
+    <List>
+      {props.navItems.map((item) => (
+        <ListItem key={item}>
+          <Link
+            to={item.toLowerCase()}
+            spy={true}
+            smooth={true}
+            duration={500}
+            activeClass="active"
+          >
             <ListItemButton sx={{ textAlign: 'center' }} >
               <ListItemText primary={item} />
             </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
+          </Link>
+        </ListItem>
+      ))}
+    </List>
+  </Box>
+  
   );
 
   const container = window !== undefined ? () => window().document.body : undefined;

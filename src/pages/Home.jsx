@@ -11,7 +11,7 @@ import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 import EmailIcon from '@mui/icons-material/Email';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import HomeIcon from '@mui/icons-material/Home';
-
+import { Link } from 'react-scroll';
 
 
 let cebu_head_office_list = [
@@ -36,14 +36,14 @@ function Home() {
 
   return (
     <>
-      <Navbar navItems={['Home', 'About Us', 'Join Us', 'Contact Us']} />
+      <Navbar navItems={['Home', 'About', 'Join', 'Contact']} />
       <PageBanner />
-      <HomeItem title='About Us'>
+      <HomeItem title='About Us' id='about us'>
         <Grid item md={6} sx={{ width: '100%', height: 'auto', }}>
           <img src="/src/img/building.png" alt="Building" style={{ width: "100%", height: "600px" }} />
         </Grid>
         <Grid item md={6} >
-          <Box sx={{ width: '80%', margin: "0 auto", padding: '2rem ', marginTop: '2rem' }}>
+          <Box sx={{ width: '80%', margin: "0 auto", padding: '2rem ', marginTop: '2rem' }} id='about'>
             <Typography
               sx={{
                 textAlign: 'left',
