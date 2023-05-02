@@ -6,6 +6,7 @@ import ApplicationForm from './components/ApplicationForm'
 import Home from './pages/Home'
 import Applicants from './pages/Applicants'
 import Application from './pages/Application'
+import ManageApplicants from './pages/ManageApplicants'
 
 
 function App() {
@@ -16,7 +17,8 @@ function App() {
                 <ApplicationForm />
             </Image> */}
             {/* <Home /> */}
-            <Applicants />
+            {/* <Applicants /> */}
+            <ManageApplicants />
             {/* <Application /> */}
         </div>
     )
