@@ -6,6 +6,10 @@ import { Grid } from '@mui/material';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Typography from '@mui/material/Typography';
 import Input from '@mui/material/Input';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 export default function ApplicationForm() {
   const [firstName, setfirstName] = React.useState('');
@@ -13,6 +17,10 @@ export default function ApplicationForm() {
   const [email, setEmail] = React.useState('');
   const [contactNumber, setcontactNumber] = React.useState('');
   const [jobPosition, setjobPosition] = React.useState('');
+
+  const handleChange = (event) => {
+    setjobPosition(event.target.value);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -37,7 +45,7 @@ export default function ApplicationForm() {
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1, justifyContent: 'center' }}>
 
             <TextField
-              margin="normal"
+              margin="dense"
               required
               fullWidth
               id="firstName"
@@ -48,7 +56,7 @@ export default function ApplicationForm() {
             />
 
             <TextField
-              margin="normal"
+              margin="dense"
               required
               fullWidth
               id="lastName"
@@ -59,7 +67,7 @@ export default function ApplicationForm() {
             />
 
             <TextField
-              margin="normal"
+              margin="dense"
               required
               fullWidth
               id="email"
@@ -70,7 +78,7 @@ export default function ApplicationForm() {
             />
 
             <TextField
-              margin="normal"
+              margin="dense"
               required
               fullWidth
               id="contactNumber"
@@ -79,6 +87,26 @@ export default function ApplicationForm() {
               autoComplete="contactNumber"
               autoFocus
             />
+            <div>
+              <FormControl margin="dense" fullWidth>
+                <InputLabel id="demo-simple-select-autowidth-label">Job Position</InputLabel>
+                <Select
+                  labelId="demo-simple-select-autowidth-label"
+                  id="demo-simple-select-autowidth"
+                  value={jobPosition}
+                  onChange={handleChange}
+                  fullWidth
+                  label="jobPosition"
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={"jobPosition1"}>jobPosition1</MenuItem>
+                  <MenuItem value={"jobPosition2"}>jobPosition2</MenuItem>
+                  <MenuItem value={"jobPosition3"}>jobPosition3</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
 
             <Grid>
               <Input

@@ -13,12 +13,12 @@ function App() {
 
     return (
         <div className="App">
-            {/* <Image image="src/img/application_image.png">
+             <Image image="src/img/application_image.png">
                 <ApplicationForm />
-            </Image> */}
-            {/* <Home /> */}
-            {/* <Applicants /> */}
-            <ManageApplicants />
+            </Image> 
+            {/*<Home />*/}
+            {/*<Applicants />*/}
+            {/* <ManageApplicants />*/}
             {/* <Application /> */}
         </div>
     )
