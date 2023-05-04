@@ -1,10 +1,14 @@
-import { React } from 'react'
+import { React, useState } from 'react'
 import '../App.css'
-import { Box, Grid, Typography, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material'
+import { Box, Grid, Typography, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material'
 import Navbar from '../components/Navbar'
 import { useTheme } from '@mui/material/styles';
 import PropTypes from 'prop-types';
 import EditIcon from '@mui/icons-material/Edit';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
 
 
 
@@ -47,6 +51,22 @@ function Applicants() {
         }
     ]
 
+    const [open, setOpen] = useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const [status, setStatus] = useState('');
+
+    const handleChange = (event) => {
+        setStatus(event.target.value);
+    };
+
     return (
         <>
             <Navbar navItems={['Applicants', 'Manage Applicants', 'Log Out']} />
@@ -83,12 +103,39 @@ function Applicants() {
                                         variant="contained"
                                         color="success"
                                         size="small"
-                                        onClick={() => {
-                                            alert('clicked');
-                                        }}
+                                        onClick={handleClickOpen}
                                     >
                                         <EditIcon fontSize='small' sx={{ color: "white" }} />
                                     </Button>
+                                    <Dialog open={open} onClose={handleClose} maxWidth='sm'>
+                                        <DialogTitle textAlign={'center'}>Status</DialogTitle>
+                                        <DialogContent>
+                                            <Box>
+                                                <FormControl margin="normal" sx={{ mt: 2, minWidth: 300 }} required>
+                                                    <InputLabel id="demo-simple-select-autowidth-label">Status: {row.status}</InputLabel>
+                                                    <Select
+                                                        labelId="demo-simple-select-autowidth-label"
+                                                        id="demo-simple-select-autowidth"
+                                                        value={status}
+                                                        onChange={handleChange}
+                                                        fullWidth
+                                                        label={"Status: {row.status}"}
+                                                    >
+                                                        <MenuItem value="">
+                                                            <em>-</em>
+                                                        </MenuItem>
+                                                        <MenuItem value={"status1"}>status1</MenuItem>
+                                                        <MenuItem value={"status2"}>status2</MenuItem>
+                                                        <MenuItem value={"status3"}>status3</MenuItem>
+                                                    </Select>
+                                                </FormControl>
+                                            </Box>
+                                        </DialogContent>
+                                        <DialogActions sx={{ justifyContent: 'center' }}>
+                                            <Button variant="outlined" color="primary" onClick={handleClose}>Cancel</Button>
+                                            <Button variant="contained" color="error" onClick={handleClose}>Save</Button>
+                                        </DialogActions>
+                                    </Dialog>
                                 </TableCell>
                                 <TableCell align='center' sx={{ display: 'flex', gap: '10px', justifyContent: 'center' }}>
                                     <Button variant="contained" color="primary" sx={{ padding: '5px 10px' }}>
