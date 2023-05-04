@@ -88,7 +88,7 @@ export default function ApplicationForm() {
               autoFocus
             />
             <div>
-              <FormControl margin="dense" fullWidth>
+              <FormControl margin="dense" fullWidth required>
                 <InputLabel id="demo-simple-select-autowidth-label">Job Position</InputLabel>
                 <Select
                   labelId="demo-simple-select-autowidth-label"
@@ -99,7 +99,7 @@ export default function ApplicationForm() {
                   label="jobPosition"
                 >
                   <MenuItem value="">
-                    <em>None</em>
+                    <em>-</em>
                   </MenuItem>
                   <MenuItem value={"jobPosition1"}>jobPosition1</MenuItem>
                   <MenuItem value={"jobPosition2"}>jobPosition2</MenuItem>
