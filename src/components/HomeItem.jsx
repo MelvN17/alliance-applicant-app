@@ -13,8 +13,10 @@ export default function HomeItem(props) {
               fontFamily: 'Roboto Slab, serif',
               fontWeight: '700', color: '#FF0000'
             }}
-            variant="h3">
-            {props.title}
+            variant="h3"
+            id={props.id}
+            >
+            {props.title} 
           </Typography>
           <Typography
             sx={{
