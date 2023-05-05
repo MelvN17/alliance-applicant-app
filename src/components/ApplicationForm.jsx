@@ -10,6 +10,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import axios from 'axios';
 
 export default function ApplicationForm() {
   const [firstName, setfirstName] = React.useState('');
@@ -22,9 +23,24 @@ export default function ApplicationForm() {
     setjobPosition(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(`Email: ${email}`);
+    const formData = {
+      firstName,
+      lastName,
+      email,
+      contactNumber,
+      jobPosition,
+    };
+    try {
+      const response = await axios.post('https://jsonplaceholder.typicode.com/posts', formData);
+  
+      submitForm(formData); 
+      console.log('Form data:', response.data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleFileChange = (event) => {
@@ -32,6 +48,17 @@ export default function ApplicationForm() {
     console.log('Selected file:', file);
   };
 
+  const submitForm = (formData) => {
+    axios.post('https://jsonplaceholder.typicode.com/posts', formData) // Make POST request to temporary server
+      .then((response) => {
+        console.log(response.data);
+        alert('Form submitted successfully!');
+      })
+      .catch((error) => {
+        console.error(error);
+        alert('An error occurred while submitting the form. Please try again later.');
+      });
+  };
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center' }} minWidth={450}>
 
@@ -53,6 +80,8 @@ export default function ApplicationForm() {
               name="firstName"
               autoComplete="email"
               autoFocus
+              value={firstName} // add this line
+              onChange={(e) => setfirstName(e.target.value)} // add this line
             />
 
             <TextField
@@ -64,6 +93,8 @@ export default function ApplicationForm() {
               name="lastName"
               autoComplete="lastName"
               autoFocus
+              value={lastName} // add this line
+              onChange={(e) => setlastName(e.target.value)} // add this line
             />
 
             <TextField
@@ -75,6 +106,8 @@ export default function ApplicationForm() {
               name="email"
               autoComplete="email"
               autoFocus
+              value={email} // add this line
+              onChange={(e) => setEmail(e.target.value)} // add this line
             />
 
             <TextField
@@ -86,9 +119,12 @@ export default function ApplicationForm() {
               name="contactNumber"
               autoComplete="contactNumber"
               autoFocus
+              value={contactNumber} // add this line
+              onChange={(e) => setcontactNumber(e.target.value)} // add this line
             />
+
             <div>
-              <FormControl margin="dense" fullWidth>
+              <FormControl margin="dense" fullWidth required>
                 <InputLabel id="demo-simple-select-autowidth-label">Job Position</InputLabel>
                 <Select
                   labelId="demo-simple-select-autowidth-label"
@@ -99,7 +135,7 @@ export default function ApplicationForm() {
                   label="jobPosition"
                 >
                   <MenuItem value="">
-                    <em>None</em>
+                    <em>-</em>
                   </MenuItem>
                   <MenuItem value={"jobPosition1"}>jobPosition1</MenuItem>
                   <MenuItem value={"jobPosition2"}>jobPosition2</MenuItem>
