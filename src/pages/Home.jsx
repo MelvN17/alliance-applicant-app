@@ -37,8 +37,8 @@ function Home() {
   return (
     <>
       <Navbar navItems={['Home', 'About', 'Join', 'Contact']} />
-      <PageBanner />
-      <HomeItem title='About Us' id='about us'>
+      <PageBanner id='home' />
+      <HomeItem title='About Us' id='about_us'>
         <Grid item md={6} sx={{ width: '100%', height: 'auto', }}>
           <img src="/src/img/building.png" alt="Building" style={{ width: "100%", height: "600px" }} />
         </Grid>
@@ -61,7 +61,7 @@ function Home() {
         </Grid>
       </HomeItem>
 
-      <HomeItem title='Join Us'>
+      <HomeItem title='Join Us' id='join_us'>
         <Grid
           container
           spacing={0}
@@ -107,7 +107,7 @@ function Home() {
         </Grid>
       </HomeItem>
 
-      <HomeItem title='Contact Us' subtitle='Office Locations'>
+      <HomeItem title='Contact Us' id='contact_us' subtitle='Office Locations'>
         <IconList items={cebu_head_office_list} title='Cebu Head Office' />
         <IconList items={manila_office_list} title='Manila Office' />
         <IconList items={japan_office_list} title='Japan Office' />

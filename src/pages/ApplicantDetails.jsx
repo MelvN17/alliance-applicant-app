@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar'
 function ApplicantDetails() {
 
   return (
-    <Navbar/>
+    <Navbar navItems={['Applicants', 'Manage Applicants', 'Log Out']} />
   )
 }
 

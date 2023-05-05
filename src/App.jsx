@@ -1,21 +1,32 @@
 import { React } from 'react'
 // import './App.css'
-import { Box, Grid, Typography, Button } from '@mui/material'
-import Image from './components/Image'
-import ApplicationForm from './components/ApplicationForm'
 import Home from './pages/Home'
 import Applicants from './pages/Applicants'
 import Application from './pages/Application'
+import Login from './pages/Login'
+import ApplicantDetails from './pages/ApplicantDetails'
 import ManageApplicants from './pages/ManageApplicants'
+import { Routes, Route } from 'react-router-dom';
+
+
 
 
 function App() {
 
     return (
         <div className="App">
-             <Image image="src/img/application_image.png">
+            <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/application' element={<Application />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/applicants' element={<Applicants />} />
+                <Route path='/applicantDetails' element={<ApplicantDetails />} />
+                <Route path='/manageApplicants' element={<ManageApplicants />} />
+            </Routes>
+
+            {/*<Image image="src/img/application_image.png">
                 <ApplicationForm />
-            </Image> 
+            </Image>*/}
             {/*<Home />*/}
             {/* <Applicants /> */}
             {/* <ManageApplicants />*/}

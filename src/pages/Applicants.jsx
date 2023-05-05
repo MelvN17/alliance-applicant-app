@@ -108,7 +108,7 @@ function Applicants() {
                                         <EditIcon fontSize='small' sx={{ color: "white" }} />
                                     </Button>
                                     <Dialog open={open} onClose={handleClose} maxWidth='sm'>
-                                        <DialogTitle textAlign={'center'}>Status</DialogTitle>
+                                        <DialogTitle textAlign={'center'} fontWeight='bold'>Status</DialogTitle>
                                         <DialogContent>
                                             <Box>
                                                 <FormControl margin="normal" sx={{ mt: 2, minWidth: 300 }} required>
