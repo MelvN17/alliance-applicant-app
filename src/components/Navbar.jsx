@@ -35,16 +35,16 @@ function Navbar(props) {
       <Divider />
       <List>
         {props.navItems.map((item) => (
-          <ListItem key={item}>
+          <ListItem key={item.url}>
             <Link
-              to={item.toLowerCase()}
+              to={item.url.toLowerCase()}
               spy={true}
               smooth={true}
               duration={500}
               activeClass="active"
             >
               <ListItemButton sx={{ textAlign: 'center' }} >
-                <ListItemText primary={item} />
+                <ListItemText primary={item.title} />
               </ListItemButton>
             </Link>
           </ListItem>
@@ -108,10 +108,10 @@ function Navbar(props) {
               </Box>
               <Box>
                 {props.navItems.map((item) => (
-                  <a href={'#' + (item === 'Home' ? '' : item)}
+                  <a href={(props.isScroll ? '#' : '') + item.url}
                     >
-                    <Button disableTouchRipple={true} key={item} sx={{ color: '#000000', paddingLeft: '3rem', '&:hover': { backgroundColor: "transparent", color: '#000000', fontWeight: 'bold' } }}>
-                      {item}
+                    <Button disableTouchRipple={true} key={item.url} sx={{ color: '#000000', paddingLeft: '3rem', '&:hover': { backgroundColor: "transparent", color: '#000000', fontWeight: 'bold' } }}>
+                      {item.title}
                     </Button>
                   </a>
                 ))}

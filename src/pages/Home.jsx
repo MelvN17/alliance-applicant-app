@@ -89,7 +89,12 @@ let japan_office_list = [
 function Home() {
   return (
     <>
-      <Navbar navItems={["Home", "About", "Join", "Contact"]} />
+      <Navbar isScroll navItems={[
+        {title: "home", url: ''},
+        {title: "About", url: "About"},
+        {title: "Join", url: "Join"},
+        {title: "Contact", url: "Contact"},
+      ]} />
       <PageBanner id="home" />
       <HomeItem title="About Us" id="About">
         <Grid item md={6} sx={{ width: "100%", height: "auto" }}>

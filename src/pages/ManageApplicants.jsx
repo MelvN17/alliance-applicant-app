@@ -48,7 +48,11 @@ function ManageApplicants() {
 
   return (
     <>
-      <Navbar navItems={['Applicants', 'Manage Applicants', 'Log Out']} />
+      <Navbar navItems={[{title: "Applicants", url: "applicants"},
+      {title: "Manage Applicants", url: "#"},
+      {title: "Log Out", url: "login"}]} />
+
+      
 
       <TableContainer sx={{ maxHeight: '80vh', maxWidth: '100vw', marginTop: '8rem' }} component={Paper}>
         <Box sx={{ display: 'flex', gap: '1em', alignItems: 'center' }}>

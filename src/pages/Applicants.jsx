@@ -69,7 +69,9 @@ function Applicants() {
 
     return (
         <>
-            <Navbar navItems={['Applicants', 'Manage Applicants', 'Log Out']} />
+            <Navbar navItems={[{ title: "Applicants", url: "#" },
+            { title: "Manage Applicants", url: "manageApplicants" },
+            { title: "Log Out", url: "login" }]} />
             <TableContainer sx={{ maxHeight: '80vh', maxWidth: '100vw', marginTop: '8rem' }} component={Paper}>
                 <Box sx={{ display: 'flex', gap: '1em', alignItems: 'center' }}>
                     <Typography variant="h5" gutterBottom sx={{ marginLeft: '2em', padding: '1em 0 0 0', fontWeight: 'bold' }} >
@@ -107,7 +109,7 @@ function Applicants() {
                                     >
                                         <EditIcon fontSize='small' sx={{ color: "white" }} />
                                     </Button>
-                                    <Dialog open={open} onClose={handleClose} maxWidth='sm'>
+                                    <Dialog open={open} onClose={handleClose} maxWidth='sm' hideBackdrop>
                                         <DialogTitle textAlign={'center'} fontWeight='bold'>Status</DialogTitle>
                                         <DialogContent>
                                             <Box>
