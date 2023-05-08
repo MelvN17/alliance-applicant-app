@@ -1,29 +1,29 @@
-import * as React from 'react';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import { Grid } from '@mui/material';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import Typography from '@mui/material/Typography';
-import Input from '@mui/material/Input';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import axios from 'axios';
+import * as React from "react";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import { Grid } from "@mui/material";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import Typography from "@mui/material/Typography";
+import Input from "@mui/material/Input";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import axios from "axios";
 
 export default function ApplicationForm() {
-  const [firstName, setfirstName] = React.useState('');
-  const [lastName, setlastName] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [contactNumber, setcontactNumber] = React.useState('');
-  const [jobPosition, setjobPosition] = React.useState('');
+  const [firstName, setfirstName] = React.useState("");
+  const [lastName, setlastName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [contactNumber, setcontactNumber] = React.useState("");
+  const [jobPosition, setjobPosition] = React.useState();
+  const [selectedJobPosition, setSelectedJobPosition] = React.useState("");
 
   const handleChange = (event) => {
     setjobPosition(event.target.value);
   };
 
-  
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = {
@@ -34,10 +34,13 @@ export default function ApplicationForm() {
       jobPosition,
     };
     try {
-      const response = await axios.post('https://jsonplaceholder.typicode.com/posts', formData);
-  
-      submitForm(formData); 
-      console.log('Form data:', response.data);
+      const response = await axios.post(
+        "http://localhost:55731/api/ApplicantAPI/add",
+        formData
+      );
+
+      submitForm(formData);
+      console.log("Form data:", response.data);
     } catch (error) {
       console.error(error);
     }
@@ -45,32 +48,49 @@ export default function ApplicationForm() {
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-    console.log('Selected file:', file);
+    console.log("Selected file:", file);
   };
 
   const submitForm = (formData) => {
-    axios.post('https://jsonplaceholder.typicode.com/posts', formData) // Make POST request to temporary server
+    axios
+      .post("http://localhost:55731/api/ApplicantAPI/add", formData) // Make POST request to temporary server
       .then((response) => {
         console.log(response.data);
-        alert('Form submitted successfully!');
+        alert("Form submitted successfully!");
       })
       .catch((error) => {
         console.error(error);
-        alert('An error occurred while submitting the form. Please try again later.');
+        alert(
+          "An error occurred while submitting the form. Please try again later."
+        );
       });
   };
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'center' }} minWidth={450}>
-
-      <Grid container direction="column" justifyContent="center" alignItems="center" paddingTop={'5%'} height={'100vh'}>
-        <Grid container item sx={{ width: '80%', justifyContent: 'flex-end' }}>
-          <Box component="img" src="/src/img/logo.png" width={'25%'} />
+    <Box sx={{ display: "flex", justifyContent: "center" }} minWidth={450}>
+      <Grid
+        container
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+        paddingTop={"5%"}
+        height={"100vh"}
+      >
+        <Grid container item sx={{ width: "80%", justifyContent: "flex-end" }}>
+          <Box component="img" src="/src/img/logo.png" width={"25%"} />
         </Grid>
-        <Grid item width={'80%'}>
-          <Typography variant='h4' fontWeight="bold" sx={{ color: '#000000' }}>Application Form</Typography>
-          <Typography variant='body1' sx={{ color: '#000000' }}>Enter your details below:</Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1, justifyContent: 'center' }}>
-
+        <Grid item width={"80%"}>
+          <Typography variant="h4" fontWeight="bold" sx={{ color: "#000000" }}>
+            Application Form
+          </Typography>
+          <Typography variant="body1" sx={{ color: "#000000" }}>
+            Enter your details below:
+          </Typography>
+          <Box
+            component="form"
+            noValidate
+            onSubmit={handleSubmit}
+            sx={{ mt: 1, justifyContent: "center" }}
+          >
             <TextField
               margin="dense"
               required
@@ -125,7 +145,9 @@ export default function ApplicationForm() {
 
             <div>
               <FormControl margin="dense" fullWidth required>
-                <InputLabel id="demo-simple-select-autowidth-label">Job Position</InputLabel>
+                <InputLabel id="demo-simple-select-autowidth-label">
+                  Job Position
+                </InputLabel>
                 <Select
                   labelId="demo-simple-select-autowidth-label"
                   id="demo-simple-select-autowidth"
@@ -137,7 +159,7 @@ export default function ApplicationForm() {
                   <MenuItem value="">
                     <em>-</em>
                   </MenuItem>
-                  <MenuItem value={"jobPosition1"}>jobPosition1</MenuItem>
+                  <MenuItem value={1}>Test</MenuItem>
                   <MenuItem value={"jobPosition2"}>jobPosition2</MenuItem>
                   <MenuItem value={"jobPosition3"}>jobPosition3</MenuItem>
                 </Select>
@@ -148,37 +170,42 @@ export default function ApplicationForm() {
               <Input
                 type="file"
                 onChange={handleFileChange}
-                style={{ display: 'none' }}
+                style={{ display: "none" }}
                 id="file-input"
               />
               <label htmlFor="file-input">
-                <Typography variant='body 2'>File:<br /></Typography>
+                <Typography variant="body 2">
+                  File:
+                  <br />
+                </Typography>
                 <Button component="span" color="error" variant="contained">
                   Upload CV
                 </Button>
-                <Typography variant='body 2' sx={{ color: '#808080' }}><br />Format: PDF, Doc</Typography>
+                <Typography variant="body 2" sx={{ color: "#808080" }}>
+                  <br />
+                  Format: PDF, Doc
+                </Typography>
               </label>
             </Grid>
 
-            <Grid item justifyContent="flex-end" paddingTop={'15%'}>
-              <Button type="submit" fullWidth color="error" variant='contained'>
-                <Grid container justifyContent="space-between" alignItems="center">
+            <Grid item justifyContent="flex-end" paddingTop={"15%"}>
+              <Button type="submit" fullWidth color="error" variant="contained">
+                <Grid
+                  container
+                  justifyContent="space-between"
+                  alignItems="center"
+                >
                   <Grid item></Grid>
-                  <Grid item>
-                    Submit
-                  </Grid>
+                  <Grid item>Submit</Grid>
                   <Grid item>
                     <ArrowForwardIosIcon />
                   </Grid>
                 </Grid>
               </Button>
             </Grid>
-
           </Box>
         </Grid>
       </Grid>
-
     </Box>
   );
 }
-
