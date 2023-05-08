@@ -3,7 +3,7 @@ import "../App.css";
 import { Box, Grid, Typography, Button } from "@mui/material";
 import Image from "../components/Image";
 import TestFetch from "../components/TestFetch";
-import ApplicationFormGPT from "../components/ApplicatoinFormgpt";
+import ApplicationFormGPT from "../components/ApplicationFormgpt";
 
 function ApplicationForm() {
   return (

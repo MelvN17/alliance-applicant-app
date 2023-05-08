@@ -114,10 +114,10 @@ function Applicants() {
                                         <DialogContent>
                                             <Box>
                                                 <FormControl margin="normal" sx={{ mt: 2, minWidth: 300 }} required>
-                                                    <InputLabel id="demo-simple-select-autowidth-label">Status: {row.status}</InputLabel>
+                                                    <InputLabel id="status-label">Status: {row.status}</InputLabel>
                                                     <Select
-                                                        labelId="demo-simple-select-autowidth-label"
-                                                        id="demo-simple-select-autowidth"
+                                                        labelId="status-label"
+                                                        id="status"
                                                         value={status}
                                                         onChange={handleChange}
                                                         fullWidth
@@ -140,15 +140,11 @@ function Applicants() {
                                     </Dialog>
                                 </TableCell>
                                 <TableCell align='center' sx={{ display: 'flex', gap: '10px', justifyContent: 'center' }}>
-                                    <Button variant="contained" color="primary" sx={{ padding: '5px 10px' }}>
-                                        View
-                                    </Button>
-                                    {/* <Button variant="contained" color="success" sx={{ padding: '5px 10px' }}>
-                                        Add
-                                    </Button>
-                                    <Button variant="contained" color="error" sx={{ padding: '5px 10px' }}>
-                                        Remove
-                                    </Button> */}
+                                    <a href="/applicantDetails">
+                                        <Button variant="contained" color="primary" sx={{ padding: '5px 10px' }}>
+                                            View
+                                        </Button>
+                                    </a>
                                 </TableCell>
                             </TableRow>
                         ))}
