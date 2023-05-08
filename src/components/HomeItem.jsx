@@ -4,7 +4,7 @@ import { Typography, Box, Grid } from '@mui/material';
 export default function HomeItem(props) {
   return (
     //"BOX" SERVES AS THE CONTAINER OR THE WRAPPER
-    <Box sx={{ flexGrow: 1 }}>
+    <Box component='div' id={props.id} sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
         <Grid item md={12} sx={{ padding: '2rem 0', marginTop: '2rem' }}>
           <Typography

@@ -91,7 +91,7 @@ function Home() {
     <>
       <Navbar navItems={["Home", "About", "Join", "Contact"]} />
       <PageBanner id="home" />
-      <HomeItem title="About Us" id="about_us">
+      <HomeItem title="About Us" id="About">
         <Grid item md={6} sx={{ width: "100%", height: "auto" }}>
           <img
             src="/src/img/building.png"
@@ -142,7 +142,7 @@ function Home() {
         </Grid>
       </HomeItem>
 
-      <HomeItem title="Join Us" id="join_us">
+      <HomeItem title="Join Us" id="Join">
         <Grid
           container
           spacing={0}
@@ -188,22 +188,26 @@ function Home() {
 
             <Grid paddingTop="4rem">
               <div style={{ textAlign: "center" }}>
-                <Button
-                  size="small"
-                  color="error"
-                  variant="contained"
-                  alignItems="center"
-                  endIcon={<ArrowForwardIosIcon />}
-                >
-                  Continue
-                </Button>
+                <a href="/applicationForm">
+
+                  <Button
+                    size="small"
+                    color="error"
+                    variant="contained"
+                    alignItems="center"
+                    endIcon={<ArrowForwardIosIcon />}
+                  >
+                    Continue
+                  </Button>
+                </a>
+
               </div>
             </Grid>
           </Grid>
         </Grid>
-      </HomeItem>
+      </HomeItem >
 
-      <HomeItem title="Contact Us" id="contact_us" subtitle="Office Locations">
+      <HomeItem title="Contact Us" id="Contact" subtitle="Office Locations">
         <IconList items={cebu_head_office_list} title="Cebu Head Office" />
         <IconList items={manila_office_list} title="Manila Office" />
         <IconList items={japan_office_list} title="Japan Office" />
