@@ -87,17 +87,21 @@ export default function Form() {
             </Grid>
 
             <Grid item justifyContent="flex-end" paddingTop={'15%'}>
-              <Button type="submit" fullWidth color="error" variant='contained'>
-                <Grid container justifyContent="space-between" alignItems="center">
+              <a href="/applicants">
+                <Button fullWidth color="error" variant="contained">
+                <Grid
+                  container
+                  justifyContent="space-between"
+                  alignItems="center"
+                >
                   <Grid item></Grid>
-                  <Grid item>
-                    LOGIN
-                  </Grid>
+                  <Grid item>LOGIN</Grid>
                   <Grid item>
                     <ArrowForwardIosIcon />
                   </Grid>
                 </Grid>
               </Button>
+              </a>
             </Grid>
 
           </Box>
