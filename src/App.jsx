@@ -6,6 +6,7 @@ import Application from "./pages/Application";
 import Login from "./pages/Login";
 import ApplicantDetails from "./pages/ApplicantDetails";
 import UpdateApplicantDetails from "./pages/UpdateApplicantDetails";
+import AddUser from "./pages/AddUser";
 import ManageApplicants from "./pages/ManageApplicants";
 import ApplicationForm from "./pages/ApplicationForm";
 import { Routes, Route } from "react-router-dom";
@@ -19,6 +20,7 @@ function App() {
         <Route path="/applicationForm" element={<ApplicationForm />} />
         <Route path="/login" element={<Login />} />
         <Route path="/applicants" element={<Applicants />} />
+        <Route path="/addUser" element={<AddUser />} />
         <Route path="/applicantDetails" element={<ApplicantDetails />} />
         <Route path="/updateApplicantDetails" element={<UpdateApplicantDetails />} />
         <Route path="/manageApplicants" element={<ManageApplicants />} />

@@ -87,9 +87,11 @@ function ManageApplicants() {
           <Typography variant="h5" gutterBottom sx={{ marginLeft: '2em', padding: '1em 0 0 0', fontWeight: 'bold' }} >
             List of Applicants
           </Typography>
-          <Button variant="contained" color="error" sx={{ height: '32px', padding: '5px 10px' }}>
-            + Add New
-          </Button>
+          <a href="/addUSer">
+            <Button variant="contained" color="error" sx={{ height: '32px', padding: '5px 10px' }}>
+              + Add New
+            </Button>
+          </a>
         </Box>
         <Table stickyHeader aria-label='simple table'>
           <TableHead>
