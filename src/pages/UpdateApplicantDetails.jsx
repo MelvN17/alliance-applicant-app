@@ -1,7 +1,7 @@
 import { React } from 'react'
 import Navbar from '../components/Navbar'
 
-function ApplicantDetails() {
+function UpdateApplicantDetails() {
 
   return (
     <Navbar navItems={[{ title: "Applicants", url: "applicants" },
@@ -10,4 +10,4 @@ function ApplicantDetails() {
   )
 }
 
-export default ApplicantDetails
+export default UpdateApplicantDetails

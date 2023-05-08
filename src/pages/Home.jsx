@@ -21,7 +21,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import HomeIcon from "@mui/icons-material/Home";
 import { Link } from "react-scroll";
 import TestFetch from "../components/TestFetch";
-import ApplicationFormGPT from "../components/ApplicatoinFormgpt";
+import ApplicationFormGPT from "../components/ApplicationFormgpt";
 
 let cebu_head_office_list = [
   {
