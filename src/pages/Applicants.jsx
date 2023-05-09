@@ -67,6 +67,7 @@ function Applicants() {
         setStatus(event.target.value);
     };
 
+    
     return (
         <>
             <Navbar navItems={[{ title: "Applicants", url: "#" },
