@@ -156,4 +156,4 @@ function Applicants() {
 
 }
 
-export default Applicants
+export default Applicants;

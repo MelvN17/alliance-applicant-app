@@ -20,7 +20,7 @@ import { Link } from 'react-scroll';
 
 const drawerWidth = 240;
 
-function Navbar(props) {
+export default function Navbar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -155,5 +155,3 @@ Navbar.propTypes = {
    */
   window: PropTypes.func,
 };
-
-export default Navbar;
