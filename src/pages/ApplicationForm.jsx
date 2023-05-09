@@ -7,11 +7,11 @@ import ApplicationFormGPT from "../components/ApplicationFormgpt";
 
 function ApplicationForm() {
   return (
-    <div className="App">
+    <>
       <Image image="src/img/application_image.png">
         <ApplicationFormGPT />
       </Image>
-    </div>
+    </>
   );
 }
 

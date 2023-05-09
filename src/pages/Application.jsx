@@ -7,11 +7,11 @@ import ApplicationForm from '../components/ApplicationForm'
 function Application() {
 
     return (
-        <div className="App">
+        <>
             <Image image="src/img/application_image.png">
                 <ApplicationForm />
             </Image>
-        </div>
+        </>
     )
 }
 

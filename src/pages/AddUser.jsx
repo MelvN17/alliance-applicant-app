@@ -67,7 +67,7 @@ function AddUser() {
             });
     };
     return (
-        <div className="App">
+        <>
             <Navbar navItems={[{ title: "Applicants", url: "applicants" },
             { title: "Manage Applicants", url: "manageApplicants" },
             { title: "Log Out", url: "login" }]} />
@@ -218,7 +218,7 @@ function AddUser() {
                     </Grid>
                 </Grid>
             </Box>
-        </div>
+        </>
     );
 }
 
