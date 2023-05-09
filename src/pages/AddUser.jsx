@@ -13,7 +13,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import axios from "axios";
 
-export default function AddUser() {
+function AddUser() {
     const [firstName, setfirstName] = React.useState("");
     const [lastName, setlastName] = React.useState("");
     const [email, setEmail] = React.useState("");
@@ -67,7 +67,7 @@ export default function AddUser() {
             });
     };
     return (
-        <div className="App">
+        <>
             <Navbar navItems={[{ title: "Applicants", url: "applicants" },
             { title: "Manage Applicants", url: "manageApplicants" },
             { title: "Log Out", url: "login" }]} />
@@ -192,7 +192,7 @@ export default function AddUser() {
                                 </label>
                             </Grid>
 
-                            <Grid item justifyContent="flex-end" paddingTop={"15%"}>
+                            <Grid item justifyContent="flex-end" paddingTop={"10%"}>
                                 <Button type="submit" fullWidth color="error" variant="contained">
                                     <Grid
                                         container
@@ -218,6 +218,8 @@ export default function AddUser() {
                     </Grid>
                 </Grid>
             </Box>
-        </div>
+        </>
     );
 }
+
+export default AddUser;

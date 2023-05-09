@@ -12,7 +12,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import axios from "axios";
 
-function ApplicationFormGPT() {
+export default function ApplicationFormGPT() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -205,4 +205,3 @@ function ApplicationFormGPT() {
   );
 }
 
-export default ApplicationFormGPT;

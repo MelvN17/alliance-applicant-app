@@ -191,4 +191,4 @@ function ManageApplicants() {
   )
 }
 
-export default ManageApplicants
+export default ManageApplicants;
