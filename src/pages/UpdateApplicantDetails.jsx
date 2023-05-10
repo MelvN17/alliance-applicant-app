@@ -7,6 +7,8 @@ import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import axios from "axios";
 
+
+
 function ApplicantDetails() {
   const firstName = "John";
   const lastName = "Doe";
@@ -46,9 +48,7 @@ function ApplicantDetails() {
                       label="First Name"
                       name="firstName"
                       defaultValue="firstName"
-                      InputProps={{
-                        readOnly: true,
-                      }}
+                      
                       autoFocus
                       value={firstName}
                       sx={{ height: '100%', paddingTop: '10px' }}
@@ -84,9 +84,7 @@ function ApplicantDetails() {
                       label="Last Name"
                       name="lastName"
                       defaultValue="lastName"
-                      InputProps={{
-                        readOnly: true,
-                      }}
+                      
                       autoFocus
                       value={lastName}
                       sx={{ height: '100%', paddingTop: '10px' }}
@@ -121,9 +119,7 @@ function ApplicantDetails() {
                     label="Email"
                     name="email"
                     defaultValue="email"
-                    InputProps={{
-                      readOnly: true,
-                    }}
+                    
                     autoFocus
                     value={email}
                     sx={{ height: '100%', paddingTop: '10px' }}
@@ -137,9 +133,7 @@ function ApplicantDetails() {
                     label="Contact Number"
                     name="contactNumber"
                     defaultValue="contactNumber"
-                    InputProps={{
-                      readOnly: true,
-                    }}
+                    
                     autoFocus
                     value={contactNumber}
                     sx={{ height: '100%', paddingTop: '10px' }}
