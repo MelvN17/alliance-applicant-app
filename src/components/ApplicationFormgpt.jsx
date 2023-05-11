@@ -13,8 +13,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import axios from "axios";
 import upload from "../firebase/service";
-import EmailValidator from 'validator/lib/isEmail';
-
+import EmailValidator from "validator/lib/isEmail";
 
 export default function ApplicationFormGPT() {
   const [firstName, setFirstName] = useState("");
@@ -51,12 +50,12 @@ export default function ApplicationFormGPT() {
     event.preventDefault();
 
     if (!EmailValidator(email)) {
-      alert('Please enter a valid email address.');
+      alert("Please enter a valid email address.");
       return;
     }
 
     if (resume) {
-      upload(resume, 'resume_storage/').then(async (url) => {
+      upload(resume, "resume_storage/").then(async (url) => {
         console.log(url);
         const formData = {
           applicant_firstname: firstName,
@@ -189,20 +188,22 @@ export default function ApplicationFormGPT() {
                 {jobPositions.map((position) => (
                   <MenuItem key={position.id} value={position.id}>
                     {position.name}
-                    <Tooltip title={position.description} style={{ position: 'absolute', right: 0 }}>
+                    <Tooltip
+                      title={position.description}
+                      style={{ position: "absolute", right: 0 }}
+                    >
                       <InfoIcon />
                     </Tooltip>
                   </MenuItem>
                 ))}
-
               </Select>
             </FormControl>
             <Grid>
               <Input
                 type="file"
                 onChange={(e) => {
-                  console.log(e.target.files[0])
-                  setResume(e.target.files[0])
+                  console.log(e.target.files[0]);
+                  setResume(e.target.files[0]);
                 }}
                 style={{ display: "none" }}
                 id="file-input"
@@ -222,7 +223,13 @@ export default function ApplicationFormGPT() {
               </label>
             </Grid>
             <Grid item justifyContent="flex-end" paddingTop={"15%"}>
-              <Button type="submit" fullWidth color="error" variant="contained" onClick={handleSubmit}>
+              <Button
+                type="submit"
+                fullWidth
+                color="error"
+                variant="contained"
+                onClick={handleSubmit}
+              >
                 <Grid
                   container
                   justifyContent="space-between"
@@ -236,11 +243,28 @@ export default function ApplicationFormGPT() {
                 </Grid>
               </Button>
               <Modal open={modalOpen} onClose={handleClose}>
-                <Box sx={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", bgcolor: "background.paper", boxShadow: 24, p: 4, backgroundColor: '#FF0000' }}>
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    bgcolor: "background.paper",
+                    boxShadow: 24,
+                    p: 4,
+                    backgroundColor: "#FF0000",
+                  }}
+                >
                   <Typography variant="h6" component="h2" gutterBottom>
                     Application Sent Successfully
                   </Typography>
-                  <Button color="error" variant="contained" onClick={handleClose}>Close</Button>
+                  <Button
+                    color="error"
+                    variant="contained"
+                    onClick={handleClose}
+                  >
+                    Close
+                  </Button>
                 </Box>
               </Modal>
             </Grid>

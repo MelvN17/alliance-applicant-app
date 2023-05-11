@@ -8,7 +8,6 @@ import TestGet from "../components/TestGet";
 function Application() {
   return (
     <>
-      <TestGet />
       <Image image="src/img/application_image.png">
         <ApplicationForm />
       </Image>

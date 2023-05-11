@@ -17,10 +17,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/application" element={<Application />} />
+        <Route path="/jobPosition" element={<JobPosition />} />
         <Route path="/applicationForm" element={<ApplicationForm />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/applicants" element={<Applicants />} />
-        <Route path="/addUser" element={<AddUser />} />
+        <Route path="/applicants" element={<Applicants />} /> // Protected
+        <Route path="/addUser" element={<AddUser />} /> //Protected
         <Route path="/applicantDetails/:id" element={<ApplicantDetails />} />
         <Route
           path="/updateApplicantDetails/:id"
@@ -28,14 +29,6 @@ function App() {
         />
         <Route path="/manageApplicants" element={<ManageApplicants />} />
       </Routes>
-
-      {/*<Image image="src/img/application_image.png">
-                <ApplicationForm />
-            </Image>*/}
-      {/*<Home />*/}
-      {/* <Applicants /> */}
-      {/* <ManageApplicants />*/}
-      {/* <Application /> */}
     </div>
   );
 }

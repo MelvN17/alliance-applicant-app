@@ -1,21 +1,21 @@
-import * as React from 'react';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import { Grid } from '@mui/material';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import Link from '@mui/material/Link';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Typography from '@mui/material/Typography';
-import InputAdornment from '@mui/material/InputAdornment';
-import IconButton from '@mui/material/IconButton';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import * as React from "react";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import { Grid } from "@mui/material";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import Link from "@mui/material/Link";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Typography from "@mui/material/Typography";
+import InputAdornment from "@mui/material/InputAdornment";
+import IconButton from "@mui/material/IconButton";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 export default function Form() {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
   const [showPassword, setShowPassword] = React.useState(false);
 
   const handleClickShowPassword = () => {
@@ -28,14 +28,28 @@ export default function Form() {
   };
 
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'center' }} minWidth={450}>
-      <Grid container direction="column" justifyContent="center" alignItems="center" paddingTop={'5%'} height={'100vh'}>
-        <Grid item width={'80%'}>
-          <Typography variant='h4' sx={{ color: '#FF0000' }}>Welcome to</Typography>
-          <Box component="img" src="/src/img/logo.png" width={'100%'} />
+    <Box sx={{ display: "flex", justifyContent: "center" }} minWidth={450}>
+      <Grid
+        container
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+        paddingTop={"5%"}
+        height={"100vh"}
+      >
+        <Grid item width={"80%"}>
+          <Typography variant="h4" sx={{ color: "#FF0000" }}>
+            Welcome to
+          </Typography>
+          <Box component="img" src="/src/img/logo.png" width={"100%"} />
         </Grid>
-        <Grid item width={'80%'}>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1, justifyContent: 'center' }}>
+        <Grid item width={"80%"}>
+          <Box
+            component="form"
+            noValidate
+            onSubmit={handleSubmit}
+            sx={{ mt: 1, justifyContent: "center" }}
+          >
             <TextField
               margin="normal"
               required
@@ -55,7 +69,7 @@ export default function Form() {
               fullWidth
               name="password"
               label="Password"
-              type={showPassword ? 'text' : 'password'}
+              type={showPassword ? "text" : "password"}
               id="password"
               autoComplete="current-password"
               value={password}
@@ -80,30 +94,29 @@ export default function Form() {
                 />
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2" sx={{ color: '#FF0000' }}>
+                <Link href="#" variant="body2" sx={{ color: "#FF0000" }}>
                   Forgot password?
                 </Link>
               </Grid>
             </Grid>
 
-            <Grid item justifyContent="flex-end" paddingTop={'15%'}>
+            <Grid item justifyContent="flex-end" paddingTop={"15%"}>
               <a href="/applicants">
                 <Button fullWidth color="error" variant="contained">
-                <Grid
-                  container
-                  justifyContent="space-between"
-                  alignItems="center"
-                >
-                  <Grid item></Grid>
-                  <Grid item>LOGIN</Grid>
-                  <Grid item>
-                    <ArrowForwardIosIcon />
+                  <Grid
+                    container
+                    justifyContent="space-between"
+                    alignItems="center"
+                  >
+                    <Grid item></Grid>
+                    <Grid item>LOGIN</Grid>
+                    <Grid item>
+                      <ArrowForwardIosIcon />
+                    </Grid>
                   </Grid>
-                </Grid>
-              </Button>
+                </Button>
               </a>
             </Grid>
-
           </Box>
         </Grid>
       </Grid>

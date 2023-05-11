@@ -24,15 +24,82 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
+import Cookies from "js-cookie";
 
 function ManageApplicants() {
-  const [applicantID, setApplicantID] = useState();
   const [applicant, setApplicant] = useState([]);
+  const [position, setPosition] = useState([]);
+  const [statusList, setStatusList] = useState([]);
   const [updateStatusDialogOpen, setUpdateStatusDialogOpen] = useState(false);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
 
   useEffect(() => {
+    const accessToken = Cookies.get("access_token");
+    if (!accessToken) {
+      window.location.href = "/login";
+    }
+  }, []);
+
+  const handleSubmit = async (
+    id,
+    applicantFirstname,
+    applicantLastname,
+    applicantEmail,
+    applicantPhonenumber,
+    statusID,
+    selectedJobPosition
+  ) => {
+    const applicant = {
+      applicant_id: id,
+      applicant_firstname: applicantFirstname,
+      applicant_lastname: applicantLastname,
+      applicant_email: applicantEmail,
+      applicant_phonenumber: applicantPhonenumber,
+      applicant_status: statusID,
+      applicant_position: selectedJobPosition,
+    };
+    try {
+      const response = await axios.put(
+        "http://localhost:55731/api/ApplicantAPI/edit",
+        applicant
+      );
+      console.log(response);
+      alert("Applicant updated successfully!");
+    } catch (error) {
+      console.log(error);
+      alert("Error updating applicant!");
+    }
+  };
+
+  useEffect(() => {
+    async function getStatus() {
+      try {
+        const response = await axios.get(
+          "http://localhost:55731/api/StatusAPI/list?Page=1&PageSize=100"
+        );
+        setStatusList(response.data.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getStatus();
+  }, []);
+
+  useEffect(() => {
     async function getPositions() {
+      try {
+        const response = await axios.get(
+          "http://localhost:55731/api/PositionAPI/list?Page=1&PageSize=100"
+        );
+        setPosition(response.data.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getPositions();
+  }, []);
+  useEffect(() => {
+    async function getApplicant() {
       try {
         const response = await axios.get(
           "http://localhost:55731/api/ApplicantAPI/list?Page=1&PageSize=100"
@@ -71,6 +138,15 @@ function ManageApplicants() {
       });
   };
 
+  function handleLogout() {
+    // set access token and refresh token cookies to expire
+    document.cookie = `access_token=; expires=${new Date(0)}; path=/;`;
+    document.cookie = `refresh_token=; expires=${new Date(0)}; path=/;`;
+
+    // perform any additional logout actions, such as resetting the user's authentication status
+    console.log("Logged out successfully");
+  }
+
   const handleUpdateStatusClick = () => {
     setUpdateStatusDialogOpen(true);
   };
@@ -96,7 +172,6 @@ function ManageApplicants() {
         navItems={[
           { title: "Applicants", url: "applicants" },
           { title: "Manage Applicants", url: "#" },
-          { title: "Log Out", url: "login" },
         ]}
       />
 
@@ -121,16 +196,28 @@ function ManageApplicants() {
               + Add New
             </Button>
           </a>
+          <a href="/login">
+            <Button
+              variant="contained"
+              color="error"
+              sx={{ height: "32px", padding: "5px 10px" }}
+              onClick={handleLogout}
+            >
+              Log Out
+            </Button>
+          </a>
         </Box>
         <Table stickyHeader aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell>ID</TableCell>
-              <TableCell>NAME</TableCell>
+              <TableCell>FIRSTNAME</TableCell>
+              <TableCell>LASTNAME</TableCell>
               <TableCell>EMAIL ADDRESS</TableCell>
               <TableCell>PHONE NUMBER</TableCell>
               <TableCell>POSITION</TableCell>
               <TableCell>STATUS</TableCell>
+              <TableCell>STATUS ACTION</TableCell>
               <TableCell align="center">ACTIONS</TableCell>
             </TableRow>
           </TableHead>
@@ -141,12 +228,24 @@ function ManageApplicants() {
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell>{row.id}</TableCell>
-                <TableCell>{row.name}</TableCell>
+                <TableCell>{row.firstname}</TableCell>
+                <TableCell>{row.lastname}</TableCell>
                 <TableCell>{row.emailaddress}</TableCell>
                 <TableCell>{row.phonenumber}</TableCell>
-                <TableCell>{row.position}</TableCell>
                 <TableCell>
-                  {row.status}
+                  {
+                    position.find((position) => position.id === row.position)
+                      ?.name
+                  }
+                </TableCell>
+                <TableCell>
+                  {
+                    statusList.find(
+                      (statusData) => statusData.id === row.status
+                    )?.name
+                  }
+                </TableCell>
+                <TableCell>
                   <Button
                     variant="contained"
                     color="success"
@@ -172,7 +271,11 @@ function ManageApplicants() {
                           required
                         >
                           <InputLabel id="status-label">
-                            Status: {row.status}
+                            {
+                              statusList.find(
+                                (statusData) => statusData.id === row.status
+                              )?.name
+                            }
                           </InputLabel>
                           <Select
                             labelId="status-label"
@@ -180,7 +283,7 @@ function ManageApplicants() {
                             value={selectedStatus}
                             onChange={(e) => setSelectedStatus(e.target.value)}
                             fullWidth
-                            label={"Status: {row.status}"}
+                            label={"Status"}
                           >
                             <MenuItem value="" disabled>
                               <em>-</em>
@@ -205,9 +308,19 @@ function ManageApplicants() {
                       <Button
                         variant="contained"
                         color="error"
-                        onClick={handleUpdateStatusClose}
+                        onClick={() =>
+                          handleSubmit(
+                            row.id,
+                            row.firstname,
+                            row.lastname,
+                            row.emailaddress,
+                            row.phonenumber,
+                            status,
+                            row.position
+                          )
+                        }
                       >
-                        Save
+                        Update
                       </Button>
                     </DialogActions>
                   </Dialog>

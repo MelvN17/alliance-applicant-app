@@ -26,10 +26,17 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
+import Cookies from "js-cookie";
 
 function TestGet() {
   const [applicant, setApplicant] = useState([]);
   const [open, setOpen] = useState(false);
+  useEffect(() => {
+    const accessToken = Cookies.get("access_token");
+    if (!accessToken) {
+      window.location.href = "/login";
+    }
+  }, []);
 
   useEffect(() => {
     async function getApplicant() {
@@ -67,7 +74,6 @@ function TestGet() {
 
   const [status, setStatus] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("");
-
 
   return (
     <>

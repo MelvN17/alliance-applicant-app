@@ -110,9 +110,9 @@ const ApplicantDetails = () => {
                   <Grid item>
                     <Typography fontWeight="bold">Resume:</Typography>
                     <a href={applicant.applicant_resume}>
-                    <Button variant="contained" color="error">
-                      View CV
-                    </Button>
+                      <Button variant="contained" color="error">
+                        View CV
+                      </Button>
                     </a>
                   </Grid>
                 </Grid>

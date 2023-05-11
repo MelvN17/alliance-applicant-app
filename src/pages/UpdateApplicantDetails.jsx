@@ -8,6 +8,7 @@ import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import axios from "axios";
 import MenuItem from "@mui/material/MenuItem";
+import Cookies from "js-cookie";
 
 const UpdateApplicant = () => {
   const [applicantFirstname, setApplicantFirstname] = useState("");
@@ -19,6 +20,13 @@ const UpdateApplicant = () => {
   const [selectedJobPosition, setSelectedJobPosition] = useState("");
   const [status, setStatus] = useState("");
   let { id } = useParams();
+
+  useEffect(() => {
+    const accessToken = Cookies.get("access_token");
+    if (!accessToken) {
+      window.location.href = "/login";
+    }
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
