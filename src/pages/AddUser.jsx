@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
+import Navbar from "../components/Navbar"
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import Navbar from "../components/Navbar";
-import { Grid } from "@mui/material";
+import { Grid, Tooltip, Modal } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import InfoIcon from "@mui/icons-material/Info";
 import Typography from "@mui/material/Typography";
 import Input from "@mui/material/Input";
 import InputLabel from "@mui/material/InputLabel";
@@ -12,24 +13,29 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import axios from "axios";
+import upload from "../firebase/service";
+import EmailValidator from 'validator/lib/isEmail';
 
 const AddUser = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [contactNumber, setContactNumber] = useState("");
+  const [resume, setResume] = useState(null);
 
   const [jobPositions, setJobPositions] = useState([]);
   const [selectedJobPosition, setSelectedJobPosition] = useState("");
+
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     async function getPositions() {
       try {
         const response = await axios.get(
-          "http://localhost:55731/api/PositionAPI/list?Page=1&PageSize=2"
+          "http://localhost:55731/api/PositionAPI/list?Page=1&PageSize=100"
         );
         console.log(
-          "🚀 ~ file: ApplicatoinFormgpt.jsx:19 ~ getPositions ~ response:",
+          "🚀 ~ file: AddUser.jsx:19 ~ getPositions ~ response:",
           response
         );
 
@@ -43,27 +49,51 @@ const AddUser = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const formData = {
-      applicant_firstname: firstName,
-      applicant_lastname: lastName,
-      applicant_email: email,
-      applicant_phonenumber: contactNumber,
-      applicant_position: selectedJobPosition,
-    };
-    try {
-      const response = await axios.post(
-        "http://localhost:55731/api/ApplicantAPI/add",
-        formData
-      );
-      console.log("Form data:", response.data);
-    } catch (error) {
-      console.error(error);
+
+    if (!EmailValidator(email)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+
+    if (resume) {
+      upload(resume, 'resume_storage/').then(async (url) => {
+        console.log(url);
+        const formData = {
+          applicant_firstname: firstName,
+          applicant_lastname: lastName,
+          applicant_email: email,
+          applicant_phonenumber: contactNumber,
+          applicant_position: selectedJobPosition,
+          applicant_resume: url, // assuming this is the field name for the resume URL
+        };
+        try {
+          const response = await axios.post(
+            "http://localhost:55731/api/ApplicantAPI/add",
+            formData
+          );
+          console.log("Form data:", response.data);
+          setFirstName("");
+          setLastName("");
+          setEmail("");
+          setContactNumber("");
+          setSelectedJobPosition("");
+          setResume(null);
+
+          setModalOpen(true);
+        } catch (error) {
+          console.error(error);
+        }
+      });
     }
   };
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     console.log("Selected file:", file);
+  };
+
+  const handleClose = () => {
+    setModalOpen(false); // close modal when user clicks close button
   };
 
   return (
@@ -77,7 +107,7 @@ const AddUser = () => {
       />
 
       <Box
-        paddingTop={"80%"}
+        paddingTop={"10%"}
         sx={{ display: "center", justifyContent: "center", width: "99vw" }}
       >
         <Grid
@@ -98,19 +128,6 @@ const AddUser = () => {
             </Typography>
             <Typography variant="body1" sx={{ color: "#000000" }}>
               Enter details below:
-            </Typography>
-            <Box component="img" src="/src/img/logo.png" width={"25%"} />
-          </Grid>
-          <Grid item width={"80%"}>
-            <Typography
-              variant="h4"
-              fontWeight="bold"
-              sx={{ color: "#000000" }}
-            >
-              Application Form
-            </Typography>
-            <Typography variant="body1" sx={{ color: "#000000" }}>
-              Enter your details below:
             </Typography>
             <Box
               component="form"
@@ -179,12 +196,15 @@ const AddUser = () => {
                   fullWidth
                   label="jobPosition"
                 >
-                  <MenuItem value="">
+                  <MenuItem value="" disabled>
                     <em>-</em>
                   </MenuItem>
                   {jobPositions.map((position) => (
                     <MenuItem key={position.id} value={position.id}>
                       {position.name}
+                      <Tooltip title={position.description} style={{ position: 'absolute', right: 0 }}>
+                        <InfoIcon />
+                      </Tooltip>
                     </MenuItem>
                   ))}
                 </Select>
@@ -192,13 +212,16 @@ const AddUser = () => {
               <Grid>
                 <Input
                   type="file"
-                  onChange={handleFileChange}
+                  onChange={(e) => {
+                    console.log(e.target.files[0])
+                    setResume(e.target.files[0])
+                  }}
                   style={{ display: "none" }}
                   id="file-input"
                 />
                 <label htmlFor="file-input">
                   <Typography variant="body 2">
-                    File:
+                    File: {resume?.name}
                     <br />
                   </Typography>
                   <Button component="span" color="error" variant="contained">
@@ -229,6 +252,14 @@ const AddUser = () => {
                     </Grid>
                   </Grid>
                 </Button>
+                <Modal open={modalOpen} onClose={handleClose}>
+                <Box sx={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", bgcolor: "background.paper", boxShadow: 24, p: 4, backgroundColor: '#FF0000' }}>
+                  <Typography variant="h6" component="h2" gutterBottom>
+                    User is Added Successfully
+                  </Typography>
+                  <Button color="error" variant="contained" onClick={handleClose}>Close</Button>
+                </Box>
+              </Modal>
               </Grid>
               <Grid item justifyContent="flex-end" paddingTop={"1%"}>
                 <a href="/manageApplicants">
