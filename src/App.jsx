@@ -17,7 +17,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/application" element={<Application />} />
-        <Route path="/jobPosition" element={<JobPosition />} />
         <Route path="/applicationForm" element={<ApplicationForm />} />
         <Route path="/login" element={<Login />} />
         <Route path="/applicants" element={<Applicants />} /> // Protected
