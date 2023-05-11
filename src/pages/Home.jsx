@@ -89,12 +89,15 @@ let japan_office_list = [
 function Home() {
   return (
     <>
-      <Navbar isScroll navItems={[
-        {title: "home", url: ''},
-        {title: "About", url: "About"},
-        {title: "Join", url: "Join"},
-        {title: "Contact", url: "Contact"},
-      ]} />
+      <Navbar
+        isScroll
+        navItems={[
+          { title: "home", url: "" },
+          { title: "About", url: "About" },
+          { title: "Join", url: "Join" },
+          { title: "Contact", url: "Contact" },
+        ]}
+      />
       <PageBanner id="home" />
       <HomeItem title="About Us" id="About">
         <Grid item md={6} sx={{ width: "100%", height: "auto" }}>
@@ -194,7 +197,6 @@ function Home() {
             <Grid paddingTop="4rem">
               <div style={{ textAlign: "center" }}>
                 <a href="/applicationForm">
-
                   <Button
                     size="small"
                     color="error"
@@ -205,12 +207,11 @@ function Home() {
                     Continue
                   </Button>
                 </a>
-
               </div>
             </Grid>
           </Grid>
         </Grid>
-      </HomeItem >
+      </HomeItem>
 
       <HomeItem title="Contact Us" id="Contact" subtitle="Office Locations">
         <IconList items={cebu_head_office_list} title="Cebu Head Office" />

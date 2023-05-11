@@ -21,8 +21,11 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/applicants" element={<Applicants />} />
         <Route path="/addUser" element={<AddUser />} />
-        <Route path="/applicantDetails" element={<ApplicantDetails />} />
-        <Route path="/updateApplicantDetails" element={<UpdateApplicantDetails />} />
+        <Route path="/applicantDetails/:id" element={<ApplicantDetails />} />
+        <Route
+          path="/updateApplicantDetails/:id"
+          element={<UpdateApplicantDetails />}
+        />
         <Route path="/manageApplicants" element={<ManageApplicants />} />
       </Routes>
 

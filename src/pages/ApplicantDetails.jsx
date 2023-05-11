@@ -1,29 +1,60 @@
-import * as React from "react";
-import Navbar from '../components/Navbar'
-import { Typography, Box, TextField, Grid, Button } from '@mui/material';
+import React, { useState, useEffect } from "react";
+import Navbar from "../components/Navbar";
+import axios from "axios";
+import { Typography, Box, TextField, Grid, Button } from "@mui/material";
+import { Routes, Route, useParams } from "react-router-dom";
 
+const ApplicantDetails = () => {
+  const [applicant, setApplicant] = useState(null);
+  let { id } = useParams();
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get(
+        `http://localhost:55731/api/ApplicantAPI/getApplicant?id=${id}`
+      );
+      setApplicant(response.data);
+    };
+    fetchData();
+  }, []);
 
-function ApplicantDetails() {
-  const firstName = "John";
-  const lastName = "Doe";
-  const email = "JohnDoe@gmail.com";
-  const contactNumber = "+6390 0000 0000";
-  const jobPosition = "Software Developer";
-  const status = "Pre-screened";
+  if (!applicant) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
-      <Navbar navItems={[{ title: "Applicants", url: "applicants" },
-      { title: "Manage Applicants", url: "manageApplicants" },
-      { title: "Log Out", url: "login" }]} />
-
-      <Box paddingTop={"8%"} sx={{ display: "center", justifyContent: "center", width: '99vw' }}>
-        <Grid container direction="column" justifyContent="center" alignItems="center" paddingTop={"8%"} height="auto">
+      <Navbar
+        navItems={[
+          { title: "Applicants", url: "applicants" },
+          { title: "Manage Applicants", url: "manageApplicants" },
+          { title: "Log Out", url: "login" },
+        ]}
+      />
+      <Box
+        paddingTop={"8%"}
+        sx={{ display: "center", justifyContent: "center", width: "99vw" }}
+      >
+        <Grid
+          container
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+          paddingTop={"8%"}
+          height="auto"
+        >
           <Grid item width={"80%"}>
-            <Typography variant="h4" fontWeight="bold" sx={{ color: "#000000" }}>
+            <Typography
+              variant="h4"
+              fontWeight="bold"
+              sx={{ color: "#000000" }}
+            >
               Applicant's Details
             </Typography>
-            <Box component="form" sx={{ mt: 2, justifyContent: "center" }} marginTop={3}>
+            <Box
+              component="form"
+              sx={{ mt: 2, justifyContent: "center" }}
+              marginTop={3}
+            >
               <Grid container direction="column" spacing={2}>
                 <Grid container direction="row" spacing={50}>
                   <Grid item marginLeft={2}>
@@ -38,8 +69,8 @@ function ApplicantDetails() {
                         readOnly: true,
                       }}
                       autoFocus
-                      value={firstName}
-                      sx={{ height: '100%', paddingTop: '10px' }}
+                      value={applicant.applicant_firstname}
+                      sx={{ height: "100%", paddingTop: "10px" }}
                     />
                   </Grid>
                   <Grid item>
@@ -55,12 +86,12 @@ function ApplicantDetails() {
                       }}
                       autoFocus
                       value={status}
-                      sx={{ height: '100%', paddingTop: '10px' }}
+                      sx={{ height: "100%", paddingTop: "10px" }}
                     />
                   </Grid>
                 </Grid>
                 <Grid container direction="row" spacing={50}>
-                  <Grid item  marginLeft={2}>
+                  <Grid item marginLeft={2}>
                     <TextField
                       margin="dense"
                       size="large"
@@ -72,12 +103,12 @@ function ApplicantDetails() {
                         readOnly: true,
                       }}
                       autoFocus
-                      value={lastName}
-                      sx={{ height: '100%', paddingTop: '10px' }}
+                      value={applicant.applicant_lastname}
+                      sx={{ height: "100%", paddingTop: "10px" }}
                     />
                   </Grid>
                   <Grid item>
-                    <Typography fontWeight='bold'>Resume:</Typography>
+                    <Typography fontWeight="bold">Resume:</Typography>
                     <Button variant="contained" color="error">
                       View CV
                     </Button>
@@ -95,8 +126,8 @@ function ApplicantDetails() {
                       readOnly: true,
                     }}
                     autoFocus
-                    value={email}
-                    sx={{ height: '100%', paddingTop: '10px' }}
+                    value={applicant.applicant_email}
+                    sx={{ height: "100%", paddingTop: "10px" }}
                   />
                 </Grid>
                 <Grid item>
@@ -111,8 +142,8 @@ function ApplicantDetails() {
                       readOnly: true,
                     }}
                     autoFocus
-                    value={contactNumber}
-                    sx={{ height: '100%', paddingTop: '10px' }}
+                    value={applicant.applicant_phonenumber}
+                    sx={{ height: "100%", paddingTop: "10px" }}
                   />
                 </Grid>
                 <Grid item>
@@ -127,8 +158,8 @@ function ApplicantDetails() {
                       readOnly: true,
                     }}
                     autoFocus
-                    value={jobPosition}
-                    sx={{ height: '100%', paddingTop: '10px' }}
+                    value={applicant.applicant_position}
+                    sx={{ height: "100%", paddingTop: "10px" }}
                   />
                 </Grid>
               </Grid>
@@ -145,6 +176,6 @@ function ApplicantDetails() {
       </Box>
     </>
   );
-}
+};
 
 export default ApplicantDetails;
