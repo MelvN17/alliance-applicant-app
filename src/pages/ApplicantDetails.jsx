@@ -85,7 +85,7 @@ const ApplicantDetails = () => {
                         readOnly: true,
                       }}
                       autoFocus
-                      value={status}
+                      value={applicant.applicant_status}
                       sx={{ height: "100%", paddingTop: "10px" }}
                     />
                   </Grid>
