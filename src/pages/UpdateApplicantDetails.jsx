@@ -9,12 +9,23 @@ import InputLabel from "@mui/material/InputLabel";
 import axios from "axios";
 import MenuItem from "@mui/material/MenuItem";
 
+<<<<<<< HEAD
 const UpdateApplicant = () => {
   const [applicantFirstname, setApplicantFirstname] = useState("");
   const [applicantLastname, setApplicantLastname] = useState("");
   const [applicantEmail, setApplicantEmail] = useState("");
   const [applicantPhonenumber, setApplicantPhonenumber] = useState("");
   const [applicantPosition, setApplicantPosition] = useState("");
+=======
+
+
+function ApplicantDetails() {
+  const firstName = "John";
+  const lastName = "Doe";
+  const email = "JohnDoe@gmail.com";
+  const contactNumber = "+6390 0000 0000";
+
+>>>>>>> e07ca993ecc3a2f75f2ad07472ec4ac273a76f8d
   const [jobPositions, setJobPositions] = useState([]);
   const [selectedJobPosition, setSelectedJobPosition] = useState("");
   const [status, setStatus] = useState("");
@@ -101,6 +112,7 @@ const UpdateApplicant = () => {
 
   return (
     <>
+<<<<<<< HEAD
       <Navbar
         navItems={[
           { title: "Applicants", url: "applicants" },
@@ -141,6 +153,101 @@ const UpdateApplicant = () => {
                     label="First Name"
                     name="applicant_firstname"
                     defaultValue="firstName"
+=======
+      <Navbar navItems={[{ title: "Applicants", url: "applicants" },
+      { title: "Manage Applicants", url: "manageApplicants" },
+      { title: "Log Out", url: "login" }]} />
+
+      <Box paddingTop={"8%"} sx={{ display: "center", justifyContent: "center", width: '99vw' }}>
+        <Grid container direction="column" justifyContent="center" alignItems="center" paddingTop={"8%"} height="auto">
+          <Grid item width={"80%"}>
+            <Typography variant="h4" fontWeight="bold" sx={{ color: "#000000" }}>
+              Applicant's Details
+            </Typography>
+            <Box component="form" sx={{ mt: 2, justifyContent: "center" }} marginTop={3}>
+              <Grid container direction="column" spacing={2}>
+                <Grid container direction="row" spacing={50}>
+                  <Grid item marginLeft={2}>
+                    <TextField
+                      margin="dense"
+                      size="large"
+                      id="firstName"
+                      label="First Name"
+                      name="firstName"
+                      defaultValue="firstName"
+                      
+                      autoFocus
+                      value={firstName}
+                      sx={{ height: '100%', paddingTop: '10px' }}
+                    />
+                  </Grid>
+                  <Grid item>
+                    <FormControl margin="normal" sx={{ mt: 2, minWidth: 300 }} required>
+                      <InputLabel id="status-label">Status: {status}</InputLabel>
+                      <Select
+                        labelId="status-label"
+                        id="status"
+                        value={status}
+                        onChange={handleChange}
+                        fullWidth
+                        label={"Status: {status}"}
+                      >
+                        <MenuItem value="">
+                          <em>-</em>
+                        </MenuItem>
+                        <MenuItem value={"status1"}>status1</MenuItem>
+                        <MenuItem value={"status2"}>status2</MenuItem>
+                        <MenuItem value={"status3"}>status3</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </Grid>
+                </Grid>
+                <Grid container direction="row" spacing={50}>
+                  <Grid item marginLeft={2}>
+                    <TextField
+                      margin="dense"
+                      size="large"
+                      id="lastName"
+                      label="Last Name"
+                      name="lastName"
+                      defaultValue="lastName"
+                      
+                      autoFocus
+                      value={lastName}
+                      sx={{ height: '100%', paddingTop: '10px' }}
+                    />
+                  </Grid>
+                  <Grid item>
+                    <Typography fontWeight='bold'>Resume:</Typography>
+                    <Grid container direction="row" spacing={2}>
+                      <Grid item>
+                        <Button variant="contained" color="error">
+                          Upload New CV
+                        </Button>
+                      </Grid>
+                      <Grid item>
+                        <Button variant="contained" color="error">
+                          View CV
+                        </Button>
+                      </Grid>
+                      <Grid item>
+                        <Button variant="contained" color="error">
+                          Delete CV
+                        </Button>
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                </Grid>
+                <Grid item>
+                  <TextField
+                    margin="dense"
+                    size="large"
+                    id="email"
+                    label="Email"
+                    name="email"
+                    defaultValue="email"
+                    
+>>>>>>> e07ca993ecc3a2f75f2ad07472ec4ac273a76f8d
                     autoFocus
                     value={applicantFirstname}
                     onChange={handleFirstnameChange}
@@ -148,12 +255,33 @@ const UpdateApplicant = () => {
                   />
                 </Grid>
                 <Grid item>
+<<<<<<< HEAD
                   <FormControl
                     margin="normal"
                     sx={{ mt: 2, minWidth: 300 }}
                     required
                   >
                     <InputLabel id="status-label">Status: {status}</InputLabel>
+=======
+                  <TextField
+                    margin="dense"
+                    size="large"
+                    id="contactNumber"
+                    label="Contact Number"
+                    name="contactNumber"
+                    defaultValue="contactNumber"
+                    
+                    autoFocus
+                    value={contactNumber}
+                    sx={{ height: '100%', paddingTop: '10px' }}
+                  />
+                </Grid>
+                <Grid item>
+                  <FormControl  margin="normal" sx={{ mt: 2, minWidth: 250 }} required>
+                    <InputLabel id="demo-simple-select-autowidth-label">
+                      Job Position
+                    </InputLabel>
+>>>>>>> e07ca993ecc3a2f75f2ad07472ec4ac273a76f8d
                     <Select
                       labelId="status-label"
                       id="status"
