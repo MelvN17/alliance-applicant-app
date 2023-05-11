@@ -85,7 +85,7 @@ const ApplicantDetails = () => {
                         readOnly: true,
                       }}
                       autoFocus
-                      value={status}
+                      value={applicant.applicant_status}
                       sx={{ height: "100%", paddingTop: "10px" }}
                     />
                   </Grid>
@@ -109,9 +109,11 @@ const ApplicantDetails = () => {
                   </Grid>
                   <Grid item>
                     <Typography fontWeight="bold">Resume:</Typography>
+                    <a href={applicant.applicant_resume}>
                     <Button variant="contained" color="error">
                       View CV
                     </Button>
+                    </a>
                   </Grid>
                 </Grid>
                 <Grid item>

@@ -43,6 +43,18 @@ function ManageApplicants() {
       }
     }
     getPositions();
+
+    async function getStatus() {
+      try {
+        const response = await axios.get(
+          "http://localhost:55731/api/StatusAPI/list?Page=1&PageSize=100"
+        );
+        setStatus(response.data.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getStatus();
   }, []);
 
   const handleDelete = (id) => {
@@ -76,10 +88,8 @@ function ManageApplicants() {
   };
 
   const [status, setStatus] = useState("");
+  const [selectedStatus, setSelectedStatus] = useState("");
 
-  const handleChange = (event) => {
-    setStatus(event.target.value);
-  };
   return (
     <>
       <Navbar
@@ -167,17 +177,19 @@ function ManageApplicants() {
                           <Select
                             labelId="status-label"
                             id="status"
-                            value={status}
-                            onChange={handleChange}
+                            value={selectedStatus}
+                            onChange={(e) => setSelectedStatus(e.target.value)}
                             fullWidth
                             label={"Status: {row.status}"}
                           >
-                            <MenuItem value="">
+                            <MenuItem value="" disabled>
                               <em>-</em>
                             </MenuItem>
-                            <MenuItem value={"status1"}>status1</MenuItem>
-                            <MenuItem value={"status2"}>status2</MenuItem>
-                            <MenuItem value={"status3"}>status3</MenuItem>
+                            {status.map((status) => (
+                              <MenuItem key={status.id} value={status.id}>
+                                {status.name}
+                              </MenuItem>
+                            ))}
                           </Select>
                         </FormControl>
                       </Box>

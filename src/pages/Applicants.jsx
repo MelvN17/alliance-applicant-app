@@ -32,7 +32,7 @@ function TestGet() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    async function getPositions() {
+    async function getApplicant() {
       try {
         const response = await axios.get(
           "http://localhost:55731/api/ApplicantAPI/list?Page=1&PageSize=100"
@@ -42,7 +42,7 @@ function TestGet() {
         console.error(error);
       }
     }
-    getPositions();
+    getApplicant();
 
     async function getStatus() {
       try {
