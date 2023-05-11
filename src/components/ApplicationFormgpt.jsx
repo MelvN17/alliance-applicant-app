@@ -176,8 +176,8 @@ export default function ApplicationFormGPT() {
                 Job Position
               </InputLabel>
               <Select
-                labelId="demo-simple-select-autowidth-label"
-                id="demo-simple-select-autowidth"
+                labelId="jobPosition-label"
+                id="jobPosition"
                 value={selectedJobPosition}
                 onChange={(e) => setSelectedJobPosition(e.target.value)}
                 fullWidth
