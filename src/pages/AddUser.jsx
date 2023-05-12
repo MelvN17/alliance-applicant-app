@@ -64,7 +64,7 @@ const AddUser = () => {
           applicant_email: email,
           applicant_phonenumber: contactNumber,
           applicant_position: selectedJobPosition,
-          applicant_resume: url, // assuming this is the field name for the resume URL
+          applicant_resume: url,
           applicant_status: 1,
         };
         try {
@@ -94,7 +94,7 @@ const AddUser = () => {
   };
 
   const handleClose = () => {
-    setModalOpen(false); // close modal when user clicks close button
+    setModalOpen(false);
   };
 
   return (
@@ -145,8 +145,8 @@ const AddUser = () => {
                 name="firstName"
                 autoComplete="email"
                 autoFocus
-                value={firstName} // add this line
-                onChange={(e) => setFirstName(e.target.value)} // add this line
+                value={firstName} 
+                onChange={(e) => setFirstName(e.target.value)} 
               />
               <TextField
                 margin="dense"
@@ -157,8 +157,8 @@ const AddUser = () => {
                 name="lastName"
                 autoComplete="lastName"
                 autoFocus
-                value={lastName} // add this line
-                onChange={(e) => setLastName(e.target.value)} // add this line
+                value={lastName} 
+                onChange={(e) => setLastName(e.target.value)}
               />
               <TextField
                 margin="dense"
@@ -169,8 +169,8 @@ const AddUser = () => {
                 name="email"
                 autoComplete="email"
                 autoFocus
-                value={email} // add this line
-                onChange={(e) => setEmail(e.target.value)} // add this line
+                value={email} 
+                onChange={(e) => setEmail(e.target.value)}
               />
               <TextField
                 margin="dense"
@@ -181,8 +181,8 @@ const AddUser = () => {
                 name="contactNumber"
                 autoComplete="contactNumber"
                 autoFocus
-                value={contactNumber} // add this line
-                onChange={(e) => setContactNumber(e.target.value)} // add this line
+                value={contactNumber}
+                onChange={(e) => setContactNumber(e.target.value)}
               />
 
               <FormControl margin="dense" fullWidth required>
