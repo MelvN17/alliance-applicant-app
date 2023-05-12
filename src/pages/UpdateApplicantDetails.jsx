@@ -10,7 +10,7 @@ import axios from "axios";
 import MenuItem from "@mui/material/MenuItem";
 import Cookies from "js-cookie";
 
-const UpdateApplicant = () => {
+const UpdateApplicantDetails = () => {
   const [applicantFirstname, setApplicantFirstname] = useState("");
   const [applicantLastname, setApplicantLastname] = useState("");
   const [applicantEmail, setApplicantEmail] = useState("");
@@ -18,6 +18,7 @@ const UpdateApplicant = () => {
   const [applicantPosition, setApplicantPosition] = useState("");
   const [jobPositions, setJobPositions] = useState([]);
   const [selectedJobPosition, setSelectedJobPosition] = useState("");
+  const [statusList, setStatusList] = useState([]);
   const [status, setStatus] = useState("");
   let { id } = useParams();
 
@@ -37,6 +38,7 @@ const UpdateApplicant = () => {
       applicant_email: applicantEmail,
       applicant_phonenumber: applicantPhonenumber,
       applicant_position: selectedJobPosition,
+      applicant_status: status,
     };
     try {
       const response = await axios.put(
@@ -70,10 +72,24 @@ const UpdateApplicant = () => {
   }, [id]);
 
   useEffect(() => {
+    const statusData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:55731/api/StatusAPI/list?Page=1&PageSize=100`
+        );
+        setStatusList(response.data.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    statusData();
+  }, [id]);
+
+  useEffect(() => {
     const getPositions = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:55731/api/PositionAPI/list?Page=1&PageSize=2"
+          "http://localhost:55731/api/PositionAPI/list?Page=1&PageSize=100"
         );
         setJobPositions(response.data.data);
       } catch (error) {
@@ -173,9 +189,11 @@ const UpdateApplicant = () => {
                       <MenuItem value="">
                         <em>-</em>
                       </MenuItem>
-                      <MenuItem value={"status1"}>status1</MenuItem>
-                      <MenuItem value={"status2"}>status2</MenuItem>
-                      <MenuItem value={"status3"}>status3</MenuItem>
+                      {statusList.map((status) => (
+                        <MenuItem key={status.id} value={status.id}>
+                          {status.name}
+                        </MenuItem>
+                      ))}
                     </Select>
                   </FormControl>
                 </Grid>
@@ -299,4 +317,4 @@ const UpdateApplicant = () => {
   );
 };
 
-export default UpdateApplicant;
+export default UpdateApplicantDetails;

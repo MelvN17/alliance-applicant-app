@@ -32,7 +32,6 @@ function ManageApplicants() {
   const [statusList, setStatusList] = useState([]);
   const [updateStatusDialogOpen, setUpdateStatusDialogOpen] = useState(false);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
-
   useEffect(() => {
     const accessToken = Cookies.get("access_token");
     if (!accessToken) {
@@ -58,6 +57,7 @@ function ManageApplicants() {
       applicant_status: statusID,
       applicant_position: selectedJobPosition,
     };
+    console.log("🚀 ~ file: ManageApplicants.jsx:60 ~ ManageApplicants ~ applicant:", applicant)
     try {
       const response = await axios.put(
         "http://localhost:55731/api/ApplicantAPI/edit",
@@ -69,6 +69,10 @@ function ManageApplicants() {
       console.log(error);
       alert("Error updating applicant!");
     }
+    console.log(
+      "🚀 ~ file: ManageApplicants.jsx:72 ~ ManageApplicants ~ applicant:",
+      applicant
+    );
   };
 
   useEffect(() => {
@@ -109,7 +113,7 @@ function ManageApplicants() {
         console.error(error);
       }
     }
-    getPositions();
+    getApplicant();
 
     async function getStatus() {
       try {
@@ -288,7 +292,7 @@ function ManageApplicants() {
                             <MenuItem value="" disabled>
                               <em>-</em>
                             </MenuItem>
-                            {status.map((status) => (
+                            {statusList.map((status) => (
                               <MenuItem key={status.id} value={status.id}>
                                 {status.name}
                               </MenuItem>
@@ -315,7 +319,7 @@ function ManageApplicants() {
                             row.lastname,
                             row.emailaddress,
                             row.phonenumber,
-                            status,
+                            selectedStatus,
                             row.position
                           )
                         }

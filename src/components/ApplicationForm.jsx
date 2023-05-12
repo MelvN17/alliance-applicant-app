@@ -1,9 +1,10 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import { Grid } from "@mui/material";
+import { Grid, Tooltip, Modal } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import InfoIcon from "@mui/icons-material/Info";
 import Typography from "@mui/material/Typography";
 import Input from "@mui/material/Input";
 import InputLabel from "@mui/material/InputLabel";
@@ -11,38 +12,78 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import axios from "axios";
+import upload from "../firebase/service";
+import EmailValidator from "validator/lib/isEmail";
 
 export default function ApplicationForm() {
-  const [firstName, setfirstName] = React.useState("");
-  const [lastName, setlastName] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [contactNumber, setcontactNumber] = React.useState("");
-  const [jobPosition, setjobPosition] = React.useState();
-  const [selectedJobPosition, setSelectedJobPosition] = React.useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [contactNumber, setContactNumber] = useState("");
+  const [resume, setResume] = useState(null);
 
-  const handleChange = (event) => {
-    setjobPosition(event.target.value);
-  };
+  const [jobPositions, setJobPositions] = useState([]);
+  const [selectedJobPosition, setSelectedJobPosition] = useState("");
+
+  const [modalOpen, setModalOpen] = useState(false);
+
+  useEffect(() => {
+    async function getPositions() {
+      try {
+        const response = await axios.get(
+          "http://localhost:55731/api/PositionAPI/list?Page=1&PageSize=100"
+        );
+        console.log(
+          "🚀 ~ file: ApplicatoinForm.jsx:19 ~ getPositions ~ response:",
+          response
+        );
+
+        setJobPositions(response.data.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getPositions();
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const formData = {
-      firstName,
-      lastName,
-      email,
-      contactNumber,
-      jobPosition,
-    };
-    try {
-      const response = await axios.post(
-        "http://localhost:55731/api/ApplicantAPI/add",
-        formData
-      );
 
-      submitForm(formData);
-      console.log("Form data:", response.data);
-    } catch (error) {
-      console.error(error);
+    if (!EmailValidator(email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    if (resume) {
+      upload(resume, "resume_storage/").then(async (url) => {
+        console.log(url);
+        const formData = {
+          applicant_firstname: firstName,
+          applicant_lastname: lastName,
+          applicant_email: email,
+          applicant_phonenumber: contactNumber,
+          applicant_position: selectedJobPosition,
+          applicant_status: 1,
+          applicant_resume: url, 
+        };
+        try {
+          const response = await axios.post(
+            "http://localhost:55731/api/ApplicantAPI/add",
+            formData
+          );
+          console.log("Form data:", response.data);
+          setFirstName("");
+          setLastName("");
+          setEmail("");
+          setContactNumber("");
+          setSelectedJobPosition("");
+          setResume(null);
+
+          setModalOpen(true);
+        } catch (error) {
+          console.error(error);
+        }
+      });
     }
   };
 
@@ -51,20 +92,10 @@ export default function ApplicationForm() {
     console.log("Selected file:", file);
   };
 
-  const submitForm = (formData) => {
-    axios
-      .post("http://localhost:55731/api/ApplicantAPI/add", formData) // Make POST request to temporary server
-      .then((response) => {
-        console.log(response.data);
-        alert("Form submitted successfully!");
-      })
-      .catch((error) => {
-        console.error(error);
-        alert(
-          "An error occurred while submitting the form. Please try again later."
-        );
-      });
+  const handleClose = () => {
+    setModalOpen(false); 
   };
+
   return (
     <Box sx={{ display: "flex", justifyContent: "center" }} minWidth={450}>
       <Grid
@@ -98,12 +129,11 @@ export default function ApplicationForm() {
               id="firstName"
               label="First Name"
               name="firstName"
-              autoComplete="email"
+              autoComplete="firstName"
               autoFocus
-              value={firstName} // add this line
-              onChange={(e) => setfirstName(e.target.value)} // add this line
+              value={firstName} 
+              onChange={(e) => setFirstName(e.target.value)} 
             />
-
             <TextField
               margin="dense"
               required
@@ -113,10 +143,9 @@ export default function ApplicationForm() {
               name="lastName"
               autoComplete="lastName"
               autoFocus
-              value={lastName} // add this line
-              onChange={(e) => setlastName(e.target.value)} // add this line
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)} 
             />
-
             <TextField
               margin="dense"
               required
@@ -126,10 +155,9 @@ export default function ApplicationForm() {
               name="email"
               autoComplete="email"
               autoFocus
-              value={email} // add this line
-              onChange={(e) => setEmail(e.target.value)} // add this line
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)} 
             />
-
             <TextField
               margin="dense"
               required
@@ -139,43 +167,51 @@ export default function ApplicationForm() {
               name="contactNumber"
               autoComplete="contactNumber"
               autoFocus
-              value={contactNumber} // add this line
-              onChange={(e) => setcontactNumber(e.target.value)} // add this line
+              value={contactNumber} 
+              onChange={(e) => setContactNumber(e.target.value)} 
             />
 
-            <div>
-              <FormControl margin="dense" fullWidth required>
-                <InputLabel id="demo-simple-select-autowidth-label">
-                  Job Position
-                </InputLabel>
-                <Select
-                  labelId="demo-simple-select-autowidth-label"
-                  id="demo-simple-select-autowidth"
-                  value={jobPosition}
-                  onChange={handleChange}
-                  fullWidth
-                  label="jobPosition"
-                >
-                  <MenuItem value="">
-                    <em>-</em>
+            <FormControl margin="dense" fullWidth required>
+              <InputLabel id="demo-simple-select-autowidth-label">
+                Job Position
+              </InputLabel>
+              <Select
+                labelId="jobPosition-label"
+                id="jobPosition"
+                value={selectedJobPosition}
+                onChange={(e) => setSelectedJobPosition(e.target.value)}
+                fullWidth
+                label="jobPosition"
+              >
+                <MenuItem value="" disabled>
+                  <em>-</em>
+                </MenuItem>
+                {jobPositions.map((position) => (
+                  <MenuItem key={position.id} value={position.id}>
+                    {position.name}
+                    <Tooltip
+                      title={position.description}
+                      style={{ position: "absolute", right: 0 }}
+                    >
+                      <InfoIcon />
+                    </Tooltip>
                   </MenuItem>
-                  <MenuItem value={1}>Test</MenuItem>
-                  <MenuItem value={"jobPosition2"}>jobPosition2</MenuItem>
-                  <MenuItem value={"jobPosition3"}>jobPosition3</MenuItem>
-                </Select>
-              </FormControl>
-            </div>
-
+                ))}
+              </Select>
+            </FormControl>
             <Grid>
               <Input
                 type="file"
-                onChange={handleFileChange}
+                onChange={(e) => {
+                  console.log(e.target.files[0]);
+                  setResume(e.target.files[0]);
+                }}
                 style={{ display: "none" }}
                 id="file-input"
               />
               <label htmlFor="file-input">
                 <Typography variant="body 2">
-                  File:
+                  File: {resume?.name}
                   <br />
                 </Typography>
                 <Button component="span" color="error" variant="contained">
@@ -187,9 +223,14 @@ export default function ApplicationForm() {
                 </Typography>
               </label>
             </Grid>
-
             <Grid item justifyContent="flex-end" paddingTop={"15%"}>
-              <Button type="submit" fullWidth color="error" variant="contained">
+              <Button
+                type="submit"
+                fullWidth
+                color="error"
+                variant="contained"
+                onClick={handleSubmit}
+              >
                 <Grid
                   container
                   justifyContent="space-between"
@@ -202,6 +243,31 @@ export default function ApplicationForm() {
                   </Grid>
                 </Grid>
               </Button>
+              <Modal open={modalOpen} onClose={handleClose}>
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    bgcolor: "background.paper",
+                    boxShadow: 24,
+                    p: 4,
+                    backgroundColor: "#FF0000",
+                  }}
+                >
+                  <Typography variant="h6" component="h2" gutterBottom>
+                    Application Sent Successfully
+                  </Typography>
+                  <Button
+                    color="error"
+                    variant="contained"
+                    onClick={handleClose}
+                  >
+                    Close
+                  </Button>
+                </Box>
+              </Modal>
             </Grid>
           </Box>
         </Grid>
