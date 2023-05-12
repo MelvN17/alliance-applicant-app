@@ -64,8 +64,8 @@ const AddUser = () => {
           applicant_email: email,
           applicant_phonenumber: contactNumber,
           applicant_position: selectedJobPosition,
-          applicant_status: 1,
           applicant_resume: url, // assuming this is the field name for the resume URL
+          applicant_status: 1,
         };
         try {
           const response = await axios.post(
