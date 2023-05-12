@@ -54,10 +54,9 @@ function ManageApplicants() {
       applicant_lastname: applicantLastname,
       applicant_email: applicantEmail,
       applicant_phonenumber: applicantPhonenumber,
-      applicant_status: statusID,
       applicant_position: selectedJobPosition,
+      applicant_status: statusID,
     };
-    console.log("🚀 ~ file: ManageApplicants.jsx:60 ~ ManageApplicants ~ applicant:", applicant)
     try {
       const response = await axios.put(
         "http://localhost:55731/api/ApplicantAPI/edit",
@@ -69,6 +68,7 @@ function ManageApplicants() {
       console.log(error);
       alert("Error updating applicant!");
     }
+        console.log("🚀 ~ file: ManageApplicants.jsx:71 ~ ManageApplicants ~ applicant:", applicant)
     console.log(
       "🚀 ~ file: ManageApplicants.jsx:72 ~ ManageApplicants ~ applicant:",
       applicant

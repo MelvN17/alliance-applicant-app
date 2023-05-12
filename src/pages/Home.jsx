@@ -194,7 +194,7 @@ function Home() {
 
             <Grid paddingTop="4rem">
               <div style={{ textAlign: "center" }}>
-                <a href="/applicationForm">
+                <a href="/application">
                   <Button
                     size="small"
                     color="error"
